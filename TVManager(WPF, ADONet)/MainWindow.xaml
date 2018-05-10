@@ -7,6 +7,59 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="5" Background="#FFE2E2E2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ComboBox Margin="5" IsEditable="True" Grid.Column="0"></ComboBox>
+                <Button Margin="5" Grid.Column="1">Find</Button>
+                <Button Margin="5" Grid.Column="2">New</Button>
+            </Grid>
+            <ListView Name="ListTvSeries" Margin="5" Grid.Row="1"></ListView>
+        </Grid>
+        <StackPanel Orientation="Vertical" Margin="5" Background="#FFE2E2E2">
+            <GroupBox Header="Genres" Margin="5">
+                <ListBox Name="ListBoxGenres">
+                    <ListBox.ItemTemplate>
+                        <HierarchicalDataTemplate>
+                            <CheckBox Content="{Binding Name}" IsChecked="False" Checked="CheckBoxGenre_Checked"/>
+                        </HierarchicalDataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
+            <GroupBox Header="Channels" Margin="5">
+                <ListBox Name="ListBoxChannels">
+                    <ListBox.ItemTemplate>
+                        <HierarchicalDataTemplate>
+                            <CheckBox Content="{Binding Name}" IsChecked="False" Checked="CheckBoxChannel_Checked"/>
+                        </HierarchicalDataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
+            <GroupBox Header="Years" Margin="5">
+                <StackPanel Orientation="Vertical">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0"></TextBox>
+                        <TextBox Grid.Column="2"></TextBox>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
     </Grid>
 </Window>
