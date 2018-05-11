@@ -51,6 +51,19 @@ namespace TVManager_WPF__ADONet_.Views.Filter
         public IFilterItem GetFilterItem(int index)
         {
             return _filterItemList[index];
-        }        
+        }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (IFilterItem item in _filterItemList)
+            {
+                if (item.Value == true)
+                {
+                    stringBuilder.AppendLine(item.Item);
+                }
+            }
+            return stringBuilder.ToString();
+        }
     }
 }

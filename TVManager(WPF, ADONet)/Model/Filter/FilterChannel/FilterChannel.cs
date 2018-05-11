@@ -53,5 +53,18 @@ namespace TVManager_WPF__ADONet_.Views.Filter.FilterChannel
                 }
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (IFilterItem item in _filterItemList)
+            {
+                if (item.Value == true)
+                {
+                    stringBuilder.AppendLine(item.Item);
+                }
+            }
+            return stringBuilder.ToString();
+        }
     }
 }

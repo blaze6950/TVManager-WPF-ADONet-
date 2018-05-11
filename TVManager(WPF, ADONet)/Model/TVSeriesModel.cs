@@ -18,8 +18,8 @@ namespace TVManager_WPF__ADONet_.Model
 
         public TVSeriesModel()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["LibraryCS"].ConnectionString;
-            _factoryName = ConfigurationManager.ConnectionStrings["LibraryCS"].ProviderName;
+            _connectionString = ConfigurationManager.ConnectionStrings["TVSeriesCS"].ConnectionString;
+            _factoryName = ConfigurationManager.ConnectionStrings["TVSeriesCS"].ProviderName;
 
             _factory = DbProviderFactories.GetFactory(_factoryName);
             _connection = _factory.CreateConnection();
@@ -31,6 +31,106 @@ namespace TVManager_WPF__ADONet_.Model
             {
                 MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
             }
+        }        
+
+        public List<TVSeries> GetTVSeriesList(Filters filters)
+        {
+            List<TVSeries> newList = new List<TVSeries>();
+            DbDataReader reader = null;
+            if (!filters.IsContainsAnyFilter())
+            {
+                try
+                {
+                    DbCommand command = _factory.CreateCommand();
+                    command.Connection = _connection;
+
+                    command.CommandText = "SELECT Id, Image, TVSeriesTable.Name, YearOfIssue FROM TVSeriesTable";
+
+                    reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        newList.Add(new TVSeries((int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int)reader["YearOfIssue"]));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+                }
+                finally
+                {
+                    if (reader != null && !reader.IsClosed)
+                    {
+                        reader.Close();
+                    }
+                }
+            }
+            else
+            {
+
+            }
+            return newList;
+        }
+
+        public List<String> GetGenreList()
+        {
+            List<String> newList = new List<string>();
+            DbDataReader reader = null;
+            try
+            {
+                DbCommand command = _factory.CreateCommand();
+                command.Connection = _connection;
+
+                command.CommandText = "SELECT * FROM Genres";
+
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    newList.Add((String)reader["Name"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+            return newList;
+        }
+
+        public List<String> GetChannelList()
+        {
+            List<String> newList = new List<string>();
+            DbDataReader reader = null;
+            try
+            {
+                DbCommand command = _factory.CreateCommand();
+                command.Connection = _connection;
+
+                command.CommandText = "SELECT * FROM Channels";
+
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    newList.Add((String)reader["Name"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+            return newList;
         }
 
         public void Dispose()
@@ -39,13 +139,6 @@ namespace TVManager_WPF__ADONet_.Model
             {
                 _connection.Close();
             }
-        }
-
-        public List<TVSeries> GetTVSeriesList(Filters filters)
-        {
-            List<TVSeries> newList = new List<TVSeries>();
-
-            return newList;
         }
     }
 }
