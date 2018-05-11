@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,6 +70,7 @@
     <Compile Include="Model\Filter\Filters.cs" />
     <Compile Include="Model\Filter\FilterYear\FilterItemYear.cs" />
     <Compile Include="Model\Filter\FilterYear\FilterYear.cs" />
+    <Compile Include="Model\TVSeries.cs" />
     <Compile Include="Presenters\IPresenterMainWindow.cs" />
     <Compile Include="Model\Filter\Interfaces\IFilter.cs" />
     <Compile Include="Model\Filter\Interfaces\IFilterItem.cs" />
