@@ -30,6 +30,18 @@ namespace TVManager_WPF__ADONet_.Views.Filter.FilterChannel
             return _filterItemList[index];
         }
 
+        public bool IsContainsAnyFilter()
+        {
+            foreach (IFilterItem item in _filterItemList)
+            {
+                if (item.Value == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void RemoveFilterItem(IFilterItem filterItem)
         {
             if (filterItem != null)

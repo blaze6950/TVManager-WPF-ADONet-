@@ -12,5 +12,6 @@ namespace TVManager_WPF__ADONet_.Views.Filter
         void AddFilterItem(IFilterItem filterItem);
         void RemoveFilterItem(IFilterItem filterItem);
         IFilterItem GetFilterItem(int index);
+        bool IsContainsAnyFilter();
     }
 }

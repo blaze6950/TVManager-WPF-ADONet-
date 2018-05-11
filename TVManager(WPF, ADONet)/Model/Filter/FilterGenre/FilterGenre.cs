@@ -65,5 +65,17 @@ namespace TVManager_WPF__ADONet_.Views.Filter
             }
             return stringBuilder.ToString();
         }
+
+        public bool IsContainsAnyFilter()
+        {
+            foreach (IFilterItem item in _filterItemList)
+            {
+                if (item.Value == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
