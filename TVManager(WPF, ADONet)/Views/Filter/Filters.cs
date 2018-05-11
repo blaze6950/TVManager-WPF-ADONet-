@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TVManager_WPF__ADONet_.Presenters
+namespace TVManager_WPF__ADONet_
 {
-    class MainWindowPresenter : IPresenterMainWindow
+    class Filters
     {
+
     }
 }

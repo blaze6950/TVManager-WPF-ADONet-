@@ -62,7 +62,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Filter\FilterItemGenre.cs" />
+    <Compile Include="Views\Filter\Filters.cs" />
     <Compile Include="Presenters\IPresenterMainWindow.cs" />
+    <Compile Include="Views\Filter\IFilterItem.cs" />
     <Compile Include="Views\IViewMainWindow.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

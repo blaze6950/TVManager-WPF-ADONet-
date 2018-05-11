@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TVManager_WPF__ADONet_.Presenters;
 
 namespace TVManager_WPF__ADONet_
 {
@@ -20,9 +21,11 @@ namespace TVManager_WPF__ADONet_
     /// </summary>
     public partial class MainWindow : Window
     {
+        IPresenterMainWindow _presenter;
         public MainWindow()
         {
             InitializeComponent();
+            _presenter = new MainWindowPresenter();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
