@@ -8,5 +8,7 @@ namespace TVManager_WPF__ADONet_.Views.Filter
 {
     interface IFilterItem
     {
+        String Item { get; set; }
+        bool Value { get; set; }
     }
 }

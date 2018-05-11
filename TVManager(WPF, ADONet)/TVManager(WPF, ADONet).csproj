@@ -62,10 +62,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Filter\FilterItemGenre.cs" />
-    <Compile Include="Views\Filter\Filters.cs" />
+    <Compile Include="Model\Filter\FilterChannel\FilterChannel.cs" />
+    <Compile Include="Model\Filter\FilterChannel\FilterItemChannel.cs" />
+    <Compile Include="Model\Filter\FilterGenre\FilterGenre.cs" />
+    <Compile Include="Model\Filter\FilterGenre\FilterItemGenre.cs" />
+    <Compile Include="Model\Filter\Filters.cs" />
+    <Compile Include="Model\Filter\FilterYear\FilterItemYear.cs" />
+    <Compile Include="Model\Filter\FilterYear\FilterYear.cs" />
     <Compile Include="Presenters\IPresenterMainWindow.cs" />
-    <Compile Include="Views\Filter\IFilterItem.cs" />
+    <Compile Include="Model\Filter\Interfaces\IFilter.cs" />
+    <Compile Include="Model\Filter\Interfaces\IFilterItem.cs" />
     <Compile Include="Views\IViewMainWindow.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
