@@ -13,19 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TVManager_WPF__ADONet_.Presenters;
+using TVManager_WPF__ADONet_.Views;
 
 namespace TVManager_WPF__ADONet_
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IViewMainWindow
     {
         IPresenterMainWindow _presenter;
         public MainWindow()
         {
             InitializeComponent();
-            _presenter = new MainWindowPresenter();
+            _presenter = new MainWindowPresenter(this);
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

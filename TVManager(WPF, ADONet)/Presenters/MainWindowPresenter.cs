@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TVManager_WPF__ADONet_.Model;
+using TVManager_WPF__ADONet_.Model.Filter;
 using TVManager_WPF__ADONet_.Views;
 
 namespace TVManager_WPF__ADONet_.Presenters
@@ -24,7 +25,22 @@ namespace TVManager_WPF__ADONet_.Presenters
         private void InitializeFilters()
         {
             _filters = new Filters();
-            //_filters.FilterGenre;
+            var genreList = _model.GetGenreList();
+            foreach (String item in genreList)
+            {
+                _filters.FilterGenre.AddFilterItem(new FilterItem(item, false));
+            }
+            var channelList = _model.GetChannelList();
+            foreach (String item in channelList)
+            {
+                _filters.FilterChannel.AddFilterItem(new FilterItem(item, false));
+            }
+            SetFilterListAtView();
+        }
+
+        private void SetFilterListAtView()
+        {
+            
         }
 
         public void LoadList()
