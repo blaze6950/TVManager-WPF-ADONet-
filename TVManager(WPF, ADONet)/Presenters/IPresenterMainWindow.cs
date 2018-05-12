@@ -9,5 +9,9 @@ namespace TVManager_WPF__ADONet_.Presenters
     interface IPresenterMainWindow
     {
         void LoadList();
+        void CheckBoxGenre_Checked(String genre);
+        void CheckBoxChannel_Checked(String channel);
+        void ButtonFind_Click();
+        void ButtonNew_Click();
     }
 }

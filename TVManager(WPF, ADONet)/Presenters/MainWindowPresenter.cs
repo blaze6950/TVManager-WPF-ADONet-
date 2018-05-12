@@ -47,5 +47,25 @@ namespace TVManager_WPF__ADONet_.Presenters
         {
             List<TVSeries> TVSeriesList = _model.GetTVSeriesList(_filters);
         }
+
+        public void CheckBoxGenre_Checked(string genre)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CheckBoxChannel_Checked(string channel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ButtonFind_Click()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ButtonNew_Click()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
