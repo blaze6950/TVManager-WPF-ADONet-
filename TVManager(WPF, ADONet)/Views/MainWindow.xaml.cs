@@ -29,7 +29,22 @@ namespace TVManager_WPF__ADONet_
             _presenter = new MainWindowPresenter(this);
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void CheckBoxGenre_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBoxChannel_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonFind_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
 
         }

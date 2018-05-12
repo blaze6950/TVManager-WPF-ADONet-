@@ -9,6 +9,5 @@ namespace TVManager_WPF__ADONet_.Presenters
     interface IPresenterMainWindow
     {
         void LoadList();
-        void LoadList();
     }
 }

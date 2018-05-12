@@ -18,8 +18,8 @@ namespace TVManager_WPF__ADONet_.Presenters
         {
             _model = new TVSeriesModel();
             _view = view;
-            LoadList();
             InitializeFilters();
+            LoadList();            
         }
 
         private void InitializeFilters()
@@ -45,7 +45,7 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void LoadList()
         {
-            throw new NotImplementedException();
+            List<TVSeries> TVSeriesList = _model.GetTVSeriesList(_filters);
         }
     }
 }

@@ -23,8 +23,8 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <ComboBox Margin="5" IsEditable="True" Grid.Column="0"></ComboBox>
-                <Button Margin="5" Grid.Column="1">Find</Button>
-                <Button Margin="5" Grid.Column="2">New</Button>
+                <Button Margin="5" Grid.Column="1" Click="ButtonFind_Click">Find</Button>
+                <Button Margin="5" Grid.Column="2" Click="ButtonNew_Click">New</Button>
             </Grid>
             <ListView Name="ListTvSeries" Margin="5" Grid.Row="1"></ListView>
         </Grid>
