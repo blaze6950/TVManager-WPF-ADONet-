@@ -66,7 +66,7 @@ namespace TVManager_WPF__ADONet_.Model
             }
             else
             {
-
+                /////////
             }
             return newList;
         }
