@@ -61,8 +61,8 @@ namespace TVManager_WPF__ADONet_.Model.Filter
             foreach (IFilterItem item in _filterItemList)
             {
                 if (item.Value == true)
-                {
-                    stringBuilder.AppendLine(item.Item);
+                {                    
+                    stringBuilder.Insert(stringBuilder.Length, item.Item);
                 }
             }
             return stringBuilder.ToString();

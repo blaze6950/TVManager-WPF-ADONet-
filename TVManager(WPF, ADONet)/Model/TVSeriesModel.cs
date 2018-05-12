@@ -37,36 +37,24 @@ namespace TVManager_WPF__ADONet_.Model
         {
             List<TVSeries> newList = new List<TVSeries>();
             DbDataReader reader = null;
-            if (!filters.IsContainsAnyFilter())
+            try
             {
-                try
+                reader = BuildCommand(filters);
+                while (reader.Read())
                 {
-                    DbCommand command = _factory.CreateCommand();
-                    command.Connection = _connection;
-
-                    command.CommandText = "SELECT Id, Image, TVSeriesTable.Name, YearOfIssue FROM TVSeriesTable";
-
-                    reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        newList.Add(new TVSeries((int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int)reader["YearOfIssue"]));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
-                }
-                finally
-                {
-                    if (reader != null && !reader.IsClosed)
-                    {
-                        reader.Close();
-                    }
+                    newList.Add(new TVSeries((int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int)reader["YearOfIssue"]));
                 }
             }
-            else
+            catch (Exception ex)
             {
-                /////////
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
             }
             return newList;
         }
@@ -131,6 +119,37 @@ namespace TVManager_WPF__ADONet_.Model
                 }
             }
             return newList;
+        }
+
+        private DbDataReader BuildCommand(Filters filters)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+            if (filters.IsContainsAnyFilter())
+            {
+                StringBuilder stringBuilder = new StringBuilder("SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id JOIN TVSeriesGenres ON TVSeriesTable.Id = TVSeriesGenres.TVSeries_Id JOIN Genres ON Genres.Id = TVSeriesGenres.Genre_Id WHERE ");
+
+                if (filters.FilterGenre.IsContainsAnyFilter())
+                {
+                    stringBuilder.Insert(stringBuilder.Length, "Genres.Name IN (" + filters.FilterGenre.ToString() + ")");
+                }
+
+                if (filters.FilterChannel.IsContainsAnyFilter())
+                {
+                    stringBuilder.Insert(stringBuilder.Length, ", Channels.Name IN (" + filters.FilterChannel.ToString() + ")");
+                }
+
+                if (filters.FilterYear.IsContainsAnyFilter())
+                {
+                    stringBuilder.Insert(stringBuilder.Length, ", YearOfIssue IN (" + filters.FilterYear.ToString() + ")");
+                }
+
+                command.CommandText = stringBuilder.ToString();
+
+                return command.ExecuteReader();
+            }
+            command.CommandText = "SELECT Id, Image, TVSeriesTable.Name, YearOfIssue FROM TVSeriesTable";
+            return command.ExecuteReader();
         }
 
         public void Dispose()
