@@ -13,5 +13,6 @@ namespace TVManager_WPF__ADONet_.Presenters
         void CheckBoxChannel_Checked(String channel);
         void ButtonFind_Click();
         void ButtonNew_Click();
+        void ComboBoxFind_TextInput(String findText);
     }
 }

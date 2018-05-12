@@ -48,5 +48,10 @@ namespace TVManager_WPF__ADONet_
         {
 
         }
+
+        private void ComboBoxFind_TextInput(object sender, TextCompositionEventArgs e)
+        {
+
+        }
     }
 }

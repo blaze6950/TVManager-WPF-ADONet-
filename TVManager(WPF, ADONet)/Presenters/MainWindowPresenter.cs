@@ -67,5 +67,10 @@ namespace TVManager_WPF__ADONet_.Presenters
         {
             throw new NotImplementedException();
         }
+
+        public void ComboBoxFind_TextInput(string findText)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
