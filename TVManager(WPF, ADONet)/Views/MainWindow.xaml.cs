@@ -23,6 +23,12 @@ namespace TVManager_WPF__ADONet_
     public partial class MainWindow : Window, IViewMainWindow
     {
         IPresenterMainWindow _presenter;
+
+        ListBox IViewMainWindow.ListBoxGenres { get => ListBoxGenres; set => ListBoxGenres = value; }
+        ListBox IViewMainWindow.ListBoxChannels { get => ListBoxChannels; set => ListBoxChannels = value; }
+        ComboBox IViewMainWindow.ComboBoxFind { get => ComboBoxFind; set => ComboBoxFind = value; }
+        ListView IViewMainWindow.ListTvSeries { get => ListTvSeries; set => ListTvSeries = value; }
+
         public MainWindow()
         {
             InitializeComponent();
