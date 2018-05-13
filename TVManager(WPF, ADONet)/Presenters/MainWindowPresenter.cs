@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using TVManager_WPF__ADONet_.Model;
 using TVManager_WPF__ADONet_.Model.Filter;
 using TVManager_WPF__ADONet_.Views;
+using TVManager_WPF__ADONet_.Views.Filter;
 
 namespace TVManager_WPF__ADONet_.Presenters
 {
@@ -40,7 +42,8 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         private void SetFilterListAtView()
         {
-            
+            _view.ListBoxGenres.ItemsSource = _filters.FilterGenre.FilterItemList;
+            _view.ListBoxChannels.ItemsSource = _filters.FilterChannel.FilterItemList;
         }
 
         public void LoadList()

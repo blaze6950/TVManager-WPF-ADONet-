@@ -33,7 +33,7 @@
                 <ListBox Name="ListBoxGenres">
                     <ListBox.ItemTemplate>
                         <HierarchicalDataTemplate>
-                            <CheckBox Content="{Binding Name}" IsChecked="False" Checked="CheckBoxGenre_Checked"/>
+                            <CheckBox Content="{Binding Item}" IsChecked="False" Checked="CheckBoxGenre_Checked"/>
                         </HierarchicalDataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
