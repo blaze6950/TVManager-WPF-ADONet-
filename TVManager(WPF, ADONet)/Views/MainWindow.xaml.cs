@@ -37,27 +37,27 @@ namespace TVManager_WPF__ADONet_
 
         private void CheckBoxGenre_Checked(object sender, RoutedEventArgs e)
         {
-
+            _presenter.CheckBoxGenre_Checked((String)(((CheckBox)sender).Content));
         }
 
         private void CheckBoxChannel_Checked(object sender, RoutedEventArgs e)
         {
-
+            _presenter.CheckBoxChannel_Checked((String)(((CheckBox)sender).Content));
         }
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
-
+            _presenter.ButtonFind_Click();
         }
 
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
-
+            _presenter.ButtonNew_Click();
         }
 
         private void ComboBoxFind_TextInput(object sender, TextCompositionEventArgs e)
         {
-
+            _presenter.ComboBoxFind_TextInput((String)(((CheckBox)sender).Content));
         }
     }
 }
