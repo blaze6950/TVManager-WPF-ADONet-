@@ -23,6 +23,7 @@ namespace TVManager_WPF__ADONet_.Model
 
             _factory = DbProviderFactories.GetFactory(_factoryName);
             _connection = _factory.CreateConnection();
+            _connection.ConnectionString = _connectionString;
             try
             {
                 _connection.Open();                

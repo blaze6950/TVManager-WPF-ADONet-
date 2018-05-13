@@ -49,6 +49,7 @@ namespace TVManager_WPF__ADONet_.Presenters
         public void LoadList()
         {
             List<TVSeries> TVSeriesList = _model.GetTVSeriesList(_filters);
+            _view.ListTvSeries.ItemsSource = TVSeriesList;
         }
 
         public void CheckBoxGenre_Checked(string genre)

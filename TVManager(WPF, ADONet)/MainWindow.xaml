@@ -42,7 +42,7 @@
                 <ListBox Name="ListBoxChannels">
                     <ListBox.ItemTemplate>
                         <HierarchicalDataTemplate>
-                            <CheckBox Content="{Binding Name}" IsChecked="False" Checked="CheckBoxChannel_Checked"/>
+                            <CheckBox Content="{Binding Item}" IsChecked="False" Checked="CheckBoxChannel_Checked"/>
                         </HierarchicalDataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
