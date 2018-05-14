@@ -77,6 +77,10 @@ namespace TVManager_WPF__ADONet_
 
         private void ComboBoxFind_TextInput(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Enter)
+            {
+                ButtonFind_Click(null, null);
+            }
             _presenter.ComboBoxFind_TextInput(((ComboBox)sender).Text);
         }
     }
