@@ -54,7 +54,7 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void ButtonFind_Click()
         {
-            throw new NotImplementedException();
+            _model.GetTVSeriesList();
         }
 
         public void ButtonNew_Click()

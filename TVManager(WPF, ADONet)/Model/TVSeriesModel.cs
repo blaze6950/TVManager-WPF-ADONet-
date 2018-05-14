@@ -60,6 +60,35 @@ namespace TVManager_WPF__ADONet_.Model
             return newList;
         }
 
+        public List<TVSeries> GetTVSeriesList(String name)
+        {
+            List<TVSeries> newList = new List<TVSeries>();
+            DbDataReader reader = null;            
+            try
+            {
+                DbCommand command = _factory.CreateCommand();
+                command.Connection = _connection;
+                command.CommandText = "SELECT Id, Image, TVSeriesTable.Name, YearOfIssue FROM TVSeriesTable WHERE Name LIKE '%" + name + "%'";
+                reader = BuildCommand(null);                
+                while (reader.Read())
+                {
+                    newList.Add(new TVSeries((int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int)reader["YearOfIssue"]));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+            return newList;
+        }
+
         public List<String> GetGenreList()
         {
             List<String> newList = new List<string>();
@@ -126,7 +155,7 @@ namespace TVManager_WPF__ADONet_.Model
         {
             DbCommand command = _factory.CreateCommand();
             command.Connection = _connection;
-            if (filters.IsContainsAnyFilter())
+            if (filters != null && filters.IsContainsAnyFilter())
             {
                 StringBuilder stringBuilder = new StringBuilder("SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name, TVSeriesTable.YearOfIssue FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id LEFT JOIN TVSeriesGenres ON TVSeriesTable.Id = TVSeriesGenres.TVSeries_Id LEFT JOIN Genres ON Genres.Id = TVSeriesGenres.Genre_Id WHERE ");
 
