@@ -13,6 +13,8 @@ namespace TVManager_WPF__ADONet_.Model
         private String _name;
         private int _year;
 
+
+
         public TVSeries()
         {
         }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TVManager_WPF__ADONet_.Model;
 using TVManager_WPF__ADONet_.Presenters;
 using TVManager_WPF__ADONet_.Views;
 using TVManager_WPF__ADONet_.Views.Filter;
@@ -66,13 +67,13 @@ namespace TVManager_WPF__ADONet_
         private void ButtonListViewItemEdit_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            ListViewItem listviewItem = (ListViewItem)button.Parent; 
+            TVSeries Item = (TVSeries)button.DataContext; 
         }
 
         private void ButtonListViewItemRemove_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            ListViewItem listviewItem = (ListViewItem)button.Parent;
+            TVSeries Item = (TVSeries)button.DataContext;
         }
 
         private void ComboBoxFind_TextInput(object sender, KeyEventArgs e)
