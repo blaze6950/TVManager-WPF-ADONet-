@@ -54,12 +54,7 @@ namespace TVManager_WPF__ADONet_
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
             _presenter.ButtonNew_Click();
-        }
-
-        private void ComboBoxFind_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            _presenter.ComboBoxFind_TextInput((String)(((CheckBox)sender).Content));
-        }
+        }        
 
         private void ListBox_Selected(object sender, RoutedEventArgs e)
         {
@@ -78,6 +73,11 @@ namespace TVManager_WPF__ADONet_
         {
             Button button = (Button)sender;
             ListViewItem listviewItem = (ListViewItem)button.Parent;
-        }        
+        }
+
+        private void ComboBoxFind_TextInput(object sender, KeyEventArgs e)
+        {
+            _presenter.ComboBoxFind_TextInput(((ComboBox)sender).Text);
+        }
     }
 }

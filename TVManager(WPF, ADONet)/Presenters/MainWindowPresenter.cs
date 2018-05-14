@@ -65,7 +65,18 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void ComboBoxFind_TextInput(string findText)
         {
-            throw new NotImplementedException();
+            if (findText.Length > 0)
+            {
+                List<TVSeries> TVSeriesList = _model.GetTVSeriesList(_view.ComboBoxFind.Text);
+                if (TVSeriesList.Count > 0)
+                {
+                    _view.ComboBoxFind.Items.Clear();
+                }
+                foreach (TVSeries item in TVSeriesList)
+                {
+                    _view.ComboBoxFind.Items.Add(item.Name);
+                }
+            }            
         }
     }
 }
