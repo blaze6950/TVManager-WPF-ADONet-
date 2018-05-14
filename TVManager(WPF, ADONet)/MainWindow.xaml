@@ -29,10 +29,10 @@
             <ListView Name="ListTvSeries" Margin="5" Grid.Row="1">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Image" Width="100">
+                        <GridViewColumn Header="Image" Width="110">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding Image}" Stretch="UniformToFill" Width="100" Height="100"></Image>
+                                    <Image Source="{Binding Image}" Stretch="UniformToFill" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -53,14 +53,14 @@
                         <GridViewColumn Header="Edit" Width="85">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Edit" Width="75" Click="ButtonListViewItemEdit_Click"></Button>
+                                    <Button Content="Edit" Width="73" Click="ButtonListViewItemEdit_Click"></Button>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Header="Remove" Width="85">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Remove" Width="75" Click="ButtonListViewItemRemove_Click"></Button>
+                                    <Button Content="Remove" Width="73" Click="ButtonListViewItemRemove_Click"></Button>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
