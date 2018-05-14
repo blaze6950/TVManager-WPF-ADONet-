@@ -62,7 +62,7 @@ namespace TVManager_WPF__ADONet_.Model.Filter
             {
                 if (item.Value == true)
                 {                    
-                    stringBuilder.Insert(stringBuilder.Length, item.Item);
+                    stringBuilder.Insert(stringBuilder.Length, "'" + item.Item + "'");
                 }
             }
             return stringBuilder.ToString();

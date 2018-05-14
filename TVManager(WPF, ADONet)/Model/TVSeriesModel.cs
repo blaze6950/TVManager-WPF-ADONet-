@@ -128,7 +128,7 @@ namespace TVManager_WPF__ADONet_.Model
             command.Connection = _connection;
             if (filters.IsContainsAnyFilter())
             {
-                StringBuilder stringBuilder = new StringBuilder("SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id JOIN TVSeriesGenres ON TVSeriesTable.Id = TVSeriesGenres.TVSeries_Id JOIN Genres ON Genres.Id = TVSeriesGenres.Genre_Id WHERE ");
+                StringBuilder stringBuilder = new StringBuilder("SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name, TVSeriesTable.YearOfIssue FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id LEFT JOIN TVSeriesGenres ON TVSeriesTable.Id = TVSeriesGenres.TVSeries_Id LEFT JOIN Genres ON Genres.Id = TVSeriesGenres.Genre_Id WHERE ");
 
                 if (filters.FilterGenre.IsContainsAnyFilter())
                 {
@@ -137,12 +137,26 @@ namespace TVManager_WPF__ADONet_.Model
 
                 if (filters.FilterChannel.IsContainsAnyFilter())
                 {
-                    stringBuilder.Insert(stringBuilder.Length, ", Channels.Name IN (" + filters.FilterChannel.ToString() + ")");
+                    if (filters.FilterGenre.IsContainsAnyFilter())
+                    {
+                        stringBuilder.Insert(stringBuilder.Length, "AND Channels.Name IN (" + filters.FilterChannel.ToString() + ")");
+                    }
+                    else
+                    {
+                        stringBuilder.Insert(stringBuilder.Length, "Channels.Name IN (" + filters.FilterChannel.ToString() + ")");
+                    }
                 }
 
                 if (filters.FilterYear.IsContainsAnyFilter())
                 {
-                    stringBuilder.Insert(stringBuilder.Length, ", YearOfIssue IN (" + filters.FilterYear.ToString() + ")");
+                    if (filters.FilterChannel.IsContainsAnyFilter() || filters.FilterGenre.IsContainsAnyFilter())
+                    {
+                        stringBuilder.Insert(stringBuilder.Length, "AND YearOfIssue IN (" + filters.FilterYear.ToString() + ")");
+                    }
+                    else
+                    {
+                        stringBuilder.Insert(stringBuilder.Length, "YearOfIssue IN (" + filters.FilterYear.ToString() + ")");
+                    }
                 }
 
                 command.CommandText = stringBuilder.ToString();

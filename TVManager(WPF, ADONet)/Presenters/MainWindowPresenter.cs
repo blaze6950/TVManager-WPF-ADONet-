@@ -54,12 +54,28 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void CheckBoxGenre_Checked(string genre)
         {
-            throw new NotImplementedException();
+            foreach (IFilterItem item in _filters.FilterGenre.FilterItemList)
+            {
+                if (item.Item.Equals(genre))
+                {
+                    item.Value = true;
+                    break;
+                }
+            }
+            LoadList();
         }
 
         public void CheckBoxChannel_Checked(string channel)
         {
-            throw new NotImplementedException();
+            foreach (IFilterItem item in _filters.FilterChannel.FilterItemList)
+            {
+                if (item.Item.Equals(channel))
+                {
+                    item.Value = true;
+                    break;
+                }
+            }
+            LoadList();
         }
 
         public void ButtonFind_Click()
