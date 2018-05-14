@@ -32,80 +32,19 @@ namespace TVManager_WPF__ADONet_
 
         public MainWindow()
         {
-            InitializeComponent();
-            //ConfigListView();
+            InitializeComponent();            
             _presenter = new MainWindowPresenter(this);
-        }
-
-        //private void ConfigListView()
-        //{
-        //    GridView myGridView = new GridView();
-        //    myGridView.AllowsColumnReorder = true;
-        //    myGridView.ColumnHeaderToolTip = "Authors Information";
-
-        //    GridViewColumn gvc;
-
-        //    gvc = new GridViewColumn();
-        //    gvc.DisplayMemberBinding = new Binding("Image");
-        //    gvc.Header = "Image";
-        //    DataTemplate dataTemplate = new DataTemplate();
-        //    dataTemplate.
-        //    gvc.CellTemplate = new Image();
-        //    gvc.Width = 100;
-        //    myGridView.Columns.Add(gvc);
-
-        //    gvc = new GridViewColumn();
-        //    gvc.DisplayMemberBinding = new Binding("Name");
-        //    gvc.Header = "Name";
-        //    gvc.Width = 100;
-        //    myGridView.Columns.Add(gvc);
-
-        //    gvc = new GridViewColumn();
-        //    gvc.DisplayMemberBinding = new Binding("Year");
-        //    gvc.Header = "Year";
-        //    gvc.Width = 50;
-        //    myGridView.Columns.Add(gvc);
-
-        //    gvc = new GridViewColumn();
-        //    gvc.DisplayMemberBinding = new Binding("");
-        //    gvc.Header = "";
-        //    gvc.Width = 50;
-        //    myGridView.Columns.Add(gvc);
-
-        //    gvc = new GridViewColumn();
-        //    gvc.DisplayMemberBinding = new Binding("");
-        //    gvc.Header = "";
-        //    gvc.Width = 50;
-        //    myGridView.Columns.Add(gvc);
-
-        //    ListTvSeries.View = myGridView;
-        //    ListTvSeries.MouseDoubleClick += MyListView_MouseDoubleClick;
-        //}
+        }        
 
         private void MyListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void CheckBoxGenre_Checked(object sender, RoutedEventArgs e)
-        {
-            _presenter.CheckBoxGenre_Checked((String)(((CheckBox)sender).Content));
-        }
-
-        private void CheckBoxChannel_Checked(object sender, RoutedEventArgs e)
-        {
-            _presenter.CheckBoxChannel_Checked((String)(((CheckBox)sender).Content));
-        }
-
-        private void CheckBoxChannel_Unchecked(object sender, RoutedEventArgs e)
-        {
-            _presenter.CheckBoxChannel_Checked((String)(((CheckBox)sender).Content));
-        }
-
-        private void CheckBoxGenre_Unchecked(object sender, RoutedEventArgs e)
-        {
-            _presenter.CheckBoxGenre_Checked((String)(((CheckBox)sender).Content));
-        }
+        private void CheckBoxFilter_StateChanged(object sender, RoutedEventArgs e)
+        {            
+            _presenter.LoadList();
+        }        
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {

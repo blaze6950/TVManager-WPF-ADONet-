@@ -73,7 +73,7 @@
                 <ListBox Name="ListBoxGenres" SelectionChanged="ListBox_Selected">
                     <ListBox.ItemTemplate>
                         <HierarchicalDataTemplate>
-                            <CheckBox Content="{Binding Item}" IsChecked="{Binding Value}" Checked="CheckBoxGenre_Checked" Unchecked="CheckBoxGenre_Unchecked"/>
+                            <CheckBox Content="{Binding Item}" IsChecked="{Binding Value}" Checked="CheckBoxFilter_StateChanged" Unchecked="CheckBoxFilter_StateChanged"/>
                         </HierarchicalDataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
@@ -82,7 +82,7 @@
                 <ListBox Name="ListBoxChannels" SelectionChanged="ListBox_Selected">
                     <ListBox.ItemTemplate>
                         <HierarchicalDataTemplate>
-                            <CheckBox Content="{Binding Item}" IsChecked="{Binding Value}" Checked="CheckBoxChannel_Checked" Unchecked="CheckBoxChannel_Unchecked"/>
+                            <CheckBox Content="{Binding Item}" IsChecked="{Binding Value}" Checked="CheckBoxFilter_StateChanged" Unchecked="CheckBoxFilter_StateChanged"/>
                         </HierarchicalDataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
