@@ -59,9 +59,13 @@ namespace TVManager_WPF__ADONet_.Model.Filter
         {
             StringBuilder stringBuilder = new StringBuilder();
             foreach (IFilterItem item in _filterItemList)
-            {
-                if (item.Value == true)
+            {                
+                if (item.Value == true && stringBuilder.Length > 0)
                 {                    
+                    stringBuilder.Insert(stringBuilder.Length, ", '" + item.Item + "'");
+                }
+                else if (item.Value == true)
+                {
                     stringBuilder.Insert(stringBuilder.Length, "'" + item.Item + "'");
                 }
             }

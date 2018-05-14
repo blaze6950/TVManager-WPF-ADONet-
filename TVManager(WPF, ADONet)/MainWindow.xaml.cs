@@ -99,12 +99,12 @@ namespace TVManager_WPF__ADONet_
 
         private void CheckBoxChannel_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            _presenter.CheckBoxChannel_Checked((String)(((CheckBox)sender).Content));
         }
 
         private void CheckBoxGenre_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            _presenter.CheckBoxGenre_Checked((String)(((CheckBox)sender).Content));
         }
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)

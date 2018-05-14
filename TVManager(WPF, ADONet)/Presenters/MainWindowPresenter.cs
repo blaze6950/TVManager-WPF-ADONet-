@@ -54,27 +54,27 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void CheckBoxGenre_Checked(string genre)
         {
-            foreach (IFilterItem item in _filters.FilterGenre.FilterItemList)
-            {
-                if (item.Item.Equals(genre))
-                {
-                    item.Value = true;
-                    break;
-                }
-            }
+            //foreach (IFilterItem item in _filters.FilterGenre.FilterItemList)
+            //{
+            //    if (item.Item.Equals(genre))
+            //    {
+            //        item.Value = !item.Value;
+            //        break;
+            //    }
+            //}
             LoadList();
         }
 
         public void CheckBoxChannel_Checked(string channel)
         {
-            foreach (IFilterItem item in _filters.FilterChannel.FilterItemList)
-            {
-                if (item.Item.Equals(channel))
-                {
-                    item.Value = true;
-                    break;
-                }
-            }
+            //foreach (IFilterItem item in _filters.FilterChannel.FilterItemList)
+            //{
+            //    if (item.Item.Equals(channel))
+            //    {
+            //        item.Value = !item.Value;
+            //        break;
+            //    }
+            //}
             LoadList();
         }
 
