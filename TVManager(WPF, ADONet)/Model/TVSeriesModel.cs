@@ -69,7 +69,7 @@ namespace TVManager_WPF__ADONet_.Model
                 DbCommand command = _factory.CreateCommand();
                 command.Connection = _connection;
                 command.CommandText = "SELECT Id, Image, TVSeriesTable.Name, YearOfIssue FROM TVSeriesTable WHERE Name LIKE '%" + name + "%'";
-                reader = BuildCommand(null);                
+                reader = command.ExecuteReader();                
                 while (reader.Read())
                 {
                     newList.Add(new TVSeries((int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int)reader["YearOfIssue"]));
