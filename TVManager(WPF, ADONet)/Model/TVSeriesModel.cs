@@ -219,11 +219,11 @@ namespace TVManager_WPF__ADONet_.Model
                 {
                     if (filters.FilterChannel.IsContainsAnyFilter() || filters.FilterGenre.IsContainsAnyFilter() || filters.FilterYear.IsContainsAnyFilter())
                     {
-                        stringBuilder.Insert(stringBuilder.Length, "AND LIKE '%" + name + "%'");
+                        stringBuilder.Insert(stringBuilder.Length, "AND TVSeriesTable.Name LIKE '%" + name + "%'");
                     }
                     else
                     {
-                        stringBuilder.Insert(stringBuilder.Length, "LIKE '%" + name + "%'");
+                        stringBuilder.Insert(stringBuilder.Length, "TVSeriesTable.Name LIKE '%" + name + "%'");
                     }
                 }
 

@@ -71,7 +71,7 @@ namespace TVManager_WPF__ADONet_.Presenters
         {
             if (findText.Length > 0)
             {
-                List<TVSeries> TVSeriesList = _model.GetTVSeriesList(_view.ComboBoxFind.Text);
+                List<TVSeries> TVSeriesList = _model.GetTVSeriesList(findText);
                 if (TVSeriesList.Count > 0)
                 {
                     _view.ComboBoxFind.Items.Clear();
@@ -80,6 +80,7 @@ namespace TVManager_WPF__ADONet_.Presenters
                 {
                     _view.ComboBoxFind.Items.Add(item.Name);
                 }
+                _view.ComboBoxFind.IsDropDownOpen = true;
             }
         }
 

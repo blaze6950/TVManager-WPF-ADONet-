@@ -22,7 +22,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ComboBox Margin="5" IsEditable="True" Grid.Column="0" Name="ComboBoxFind" KeyDown="ComboBoxFind_TextInput"></ComboBox>
+                <ComboBox Margin="5" IsEditable="True" Grid.Column="0" Name="ComboBoxFind" KeyUp="ComboBoxFind_TextInput" IsTextSearchEnabled="False"></ComboBox>
                 <Button Margin="5" Grid.Column="1" Click="ButtonFind_Click">Find</Button>
                 <Button Margin="5" Grid.Column="2" Click="ButtonNew_Click">New</Button>
             </Grid>

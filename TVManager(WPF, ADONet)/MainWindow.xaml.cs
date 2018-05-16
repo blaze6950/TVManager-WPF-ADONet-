@@ -86,8 +86,8 @@ namespace TVManager_WPF__ADONet_
             if (e.Key == Key.Enter)
             {
                 ButtonFind_Click(null, null);
-            }
-            _presenter.ComboBoxFind_TextInput(((ComboBox)sender).Text);
+            }            
+            _presenter.ComboBoxFind_TextInput(ComboBoxFind.Text);
         }
     }
 }
