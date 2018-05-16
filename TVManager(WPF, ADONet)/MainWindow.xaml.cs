@@ -73,7 +73,8 @@ namespace TVManager_WPF__ADONet_
         private void ButtonListViewItemRemove_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            TVSeries Item = (TVSeries)button.DataContext;
+            TVSeries item = (TVSeries)button.DataContext;
+            _presenter.ListViewItemRemove(item);
         }
 
         private void ComboBoxFind_TextInput(object sender, KeyEventArgs e)

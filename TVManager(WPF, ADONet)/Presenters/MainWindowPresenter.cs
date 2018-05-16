@@ -78,5 +78,10 @@ namespace TVManager_WPF__ADONet_.Presenters
                 }
             }            
         }
+
+        public void ListViewItemRemove(TVSeries series)
+        {
+            //_model.
+        }
     }
 }
