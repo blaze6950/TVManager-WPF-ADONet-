@@ -74,7 +74,11 @@ namespace TVManager_WPF__ADONet_
         {
             Button button = (Button)sender;
             TVSeries item = (TVSeries)button.DataContext;
-            _presenter.ListViewItemRemove(item);
+            MessageBoxResult res = MessageBox.Show($"Delete \"{item.Name}\"", "Are you sure?", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (res == MessageBoxResult.OK)
+            {                
+                _presenter.ListViewItemRemove(item);
+            }
         }
 
         private void ComboBoxFind_TextInput(object sender, KeyEventArgs e)

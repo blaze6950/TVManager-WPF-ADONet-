@@ -76,12 +76,13 @@ namespace TVManager_WPF__ADONet_.Presenters
                 {
                     _view.ComboBoxFind.Items.Add(item.Name);
                 }
-            }            
+            }
         }
 
-        public void ListViewItemRemove(TVSeries series)
+        public void ListViewItemRemove(TVSeries item)
         {
-            //_model.
+            _model.RemoveTvSeriesItem(item);
+            LoadList();
         }
     }
 }

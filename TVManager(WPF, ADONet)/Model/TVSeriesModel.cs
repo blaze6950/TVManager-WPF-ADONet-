@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,7 +64,7 @@ namespace TVManager_WPF__ADONet_.Model
         public List<TVSeries> GetTVSeriesList(String name)
         {
             List<TVSeries> newList = new List<TVSeries>();
-            DbDataReader reader = null;            
+            DbDataReader reader = null;
             try
             {
                 DbCommand command = _factory.CreateCommand();
@@ -194,6 +195,27 @@ namespace TVManager_WPF__ADONet_.Model
             }
             command.CommandText = "SELECT Id, Image, TVSeriesTable.Name, YearOfIssue FROM TVSeriesTable";
             return command.ExecuteReader();
+        }
+
+        public void RemoveTvSeriesItem(TVSeries item)
+        {
+            try
+            {
+                DbCommand command = _factory.CreateCommand();
+                command.Connection = _connection;
+                command.CommandText = "DELETE FROM TVSeriesTable WHERE Id = @Id";
+                DbParameter idParameter = _factory.CreateParameter();
+                SqlParameter firstNameParam = new SqlParameter("@FirstName", System.Data.SqlDbType.NVarChar, 15);
+                idParameter.ParameterName = "@Id";
+                idParameter.DbType = System.Data.DbType.Int32;
+                idParameter.Value = item.Id;
+                command.Parameters.Add(idParameter);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }           
         }
 
         public void Dispose()
