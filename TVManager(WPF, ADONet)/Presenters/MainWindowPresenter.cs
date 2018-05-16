@@ -48,14 +48,18 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void LoadList()
         {
-            List<TVSeries> TVSeriesList = _model.GetTVSeriesList(_filters);
+            String name = _view.ComboBoxFind.Text;
+            if (name.Length == 0)
+            {
+                name = null;
+            }
+            List<TVSeries> TVSeriesList = _model.GetTVSeriesList(_filters, name);
             _view.ListTvSeries.ItemsSource = TVSeriesList;
         }        
 
         public void ButtonFind_Click()
         {
-            List<TVSeries> TVSeriesList = _model.GetTVSeriesList(_view.ComboBoxFind.Text);
-            _view.ListTvSeries.ItemsSource = TVSeriesList;
+            LoadList();
         }
 
         public void ButtonNew_Click()

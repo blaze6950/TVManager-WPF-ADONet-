@@ -76,7 +76,7 @@ namespace TVManager_WPF__ADONet_
             TVSeries item = (TVSeries)button.DataContext;
             MessageBoxResult res = MessageBox.Show($"Delete \"{item.Name}\"", "Are you sure?", MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (res == MessageBoxResult.OK)
-            {                
+            {
                 _presenter.ListViewItemRemove(item);
             }
         }

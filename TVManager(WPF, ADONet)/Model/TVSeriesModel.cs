@@ -41,7 +41,7 @@ namespace TVManager_WPF__ADONet_.Model
             DbDataReader reader = null;
             try
             {
-                reader = BuildCommand(filters);
+                reader = BuildCommand(filters, null);
                 while (reader.Read())
                 {
                     newList.Add(new TVSeries((int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int)reader["YearOfIssue"]));
@@ -71,6 +71,32 @@ namespace TVManager_WPF__ADONet_.Model
                 command.Connection = _connection;
                 command.CommandText = "SELECT Id, Image, TVSeriesTable.Name, YearOfIssue FROM TVSeriesTable WHERE Name LIKE '%" + name + "%'";
                 reader = command.ExecuteReader();                
+                while (reader.Read())
+                {
+                    newList.Add(new TVSeries((int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int)reader["YearOfIssue"]));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+            return newList;
+        }
+
+        public List<TVSeries> GetTVSeriesList(Filters filters, String name)
+        {
+            List<TVSeries> newList = new List<TVSeries>();
+            DbDataReader reader = null;
+            try
+            {
+                reader = BuildCommand(filters, name);
                 while (reader.Read())
                 {
                     newList.Add(new TVSeries((int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int)reader["YearOfIssue"]));
@@ -152,11 +178,11 @@ namespace TVManager_WPF__ADONet_.Model
             return newList;
         }
 
-        private DbDataReader BuildCommand(Filters filters)
+        private DbDataReader BuildCommand(Filters filters, String name)
         {
             DbCommand command = _factory.CreateCommand();
             command.Connection = _connection;
-            if (filters != null && filters.IsContainsAnyFilter())
+            if (filters != null && filters.IsContainsAnyFilter() || name != null)
             {
                 StringBuilder stringBuilder = new StringBuilder("SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name, TVSeriesTable.YearOfIssue FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id LEFT JOIN TVSeriesGenres ON TVSeriesTable.Id = TVSeriesGenres.TVSeries_Id LEFT JOIN Genres ON Genres.Id = TVSeriesGenres.Genre_Id WHERE ");
 
@@ -186,6 +212,18 @@ namespace TVManager_WPF__ADONet_.Model
                     else
                     {
                         stringBuilder.Insert(stringBuilder.Length, "YearOfIssue IN (" + filters.FilterYear.ToString() + ")");
+                    }
+                }
+
+                if (name != null)
+                {
+                    if (filters.FilterChannel.IsContainsAnyFilter() || filters.FilterGenre.IsContainsAnyFilter() || filters.FilterYear.IsContainsAnyFilter())
+                    {
+                        stringBuilder.Insert(stringBuilder.Length, "AND LIKE '%" + name + "%'");
+                    }
+                    else
+                    {
+                        stringBuilder.Insert(stringBuilder.Length, "LIKE '%" + name + "%'");
                     }
                 }
 
