@@ -35,6 +35,7 @@ namespace TVManager_WPF__ADONet_
         public Grid ButtonsOkCancel { get => GridButtonsOkCancel; set => GridButtonsOkCancel = value; }
 
 
+        // ReSharper disable once InconsistentNaming
         public TVSeriesWindow(TVSeriesExtended TVSeriesItem, TVSeriesWindowMode mode, TVSeriesModel model)
         {
             InitializeComponent();
@@ -43,12 +44,46 @@ namespace TVManager_WPF__ADONet_
 
         private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (CheckFileds())
+            {
+                _presenter.OkeyButtonClick();
+            }
+            else
+            {
+                MessageBox.Show("Fill all fields and fill correct values!", "Ooops", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
 
         private void ButtonOkey_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBoxResult res = MessageBox.Show("Cancel?", "Are u sure?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                _presenter.CancelButtonClick();
+            }
+        }
+
+        private bool CheckFileds()
+        {
+            int buf;
+            if (NameTVSeries.Text.Length <= 0)
+            {
+                return false;
+            }
+            if (Channel.Text.Length <= 0)
+            {
+                return false;
+            }
+            if (YearTB.Text.Length > 0 && !Int32.TryParse(YearTB.Text, out buf))
+            {
+                return false;
+            }
+            if (NumberOfSeasons.Text.Length > 0 && !Int32.TryParse(NumberOfSeasons.Text, out buf))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
