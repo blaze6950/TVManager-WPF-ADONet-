@@ -74,6 +74,8 @@
     <Compile Include="Presenters\IPresenterMainWindow.cs" />
     <Compile Include="Model\Filter\Interfaces\IFilter.cs" />
     <Compile Include="Model\Filter\Interfaces\IFilterItem.cs" />
+    <Compile Include="Presenters\IPresenterTVSeriesWindow.cs" />
+    <Compile Include="Presenters\TVSeriesWindowPresenter.cs" />
     <Compile Include="TVSeriesWindow.xaml.cs">
       <DependentUpon>TVSeriesWindow.xaml</DependentUpon>
     </Compile>
