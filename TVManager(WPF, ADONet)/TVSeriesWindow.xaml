@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:TVManager_WPF__ADONet_"
         mc:Ignorable="d"
         Title="TVSeriesWindow" Height="450" Width="450">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"></RowDefinition>
@@ -19,22 +20,22 @@
             </Grid.ColumnDefinitions>
             <Image Margin="5" Name="Image"></Image>
             <StackPanel Grid.Column="1">
-                <TextBox Margin="5" IsEnabled="False" Name="NameTB">Name</TextBox>
+                <TextBox Margin="5" Name="NameTB" IsEnabled="False" AutomationProperties.HelpText="Name" ToolTip="Name"/>
                 <GroupBox Header="Channel:">
-                    <TextBox Name="ChannelTB" IsEnabled="False" Margin="0 3 0 3">Channel</TextBox>
+                    <TextBox Name="ChannelTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Channel" ToolTip="Channel"></TextBox>
                 </GroupBox>
                 <GroupBox Header="Genre:">
-                    <TextBox Name="GenreTB" IsEnabled="False" Margin="0 3 0 3">Genre</TextBox>
+                    <TextBox Name="GenreTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Genre" ToolTip="Genre" IsReadOnly="True"></TextBox>
                 </GroupBox>
                 <GroupBox Header="Year:">
-                    <TextBox Name="YearTB" IsEnabled="False" Margin="0 3 0 3">1900</TextBox>
+                    <TextBox Name="YearTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Year" ToolTip="Year"></TextBox>
                 </GroupBox>
                 <GroupBox Header="Number of seasons:">
-                    <TextBox Name="SeasonsTB" IsEnabled="False" Margin="0 3 0 3">0</TextBox>
+                    <TextBox Name="SeasonsTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Number of seasons" ToolTip="Number of seasons"></TextBox>
                 </GroupBox>
             </StackPanel>
         </Grid>
-        <TextBox Grid.Row="1" Margin="5" Name="DescriptionTB">Description</TextBox>
+        <TextBox Grid.Row="1" Margin="5" Name="DescriptionTB"></TextBox>
         <Grid Grid.Row="2" Name="GridButtonsOkCancel">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -42,8 +43,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Margin="5" Grid.Column="2">Cancel</Button>
-            <Button Margin="5" Grid.Column="3">OK</Button>
+            <Button Margin="5" Grid.Column="2" Click="ButtonCancel_OnClick">Cancel</Button>
+            <Button Margin="5" Grid.Column="3" Click="ButtonOkey_OnClick">OK</Button>
         </Grid>
     </Grid>
 </Window>
