@@ -10,8 +10,8 @@ namespace TVManager_WPF__ADONet_.Model
     {
         private String _description;
         private String _channel;
-        private List<String> _genreList;
-        private int _numberOfSeasons;
+        private List<String> _genreList = new List<string>();
+        private int? _numberOfSeasons;
 
         public TVSeriesExtended()
         {
@@ -59,7 +59,7 @@ namespace TVManager_WPF__ADONet_.Model
             set { _genreList = value; }
         }
 
-        public int NumberOfSeasons
+        public int? NumberOfSeasons
         {
             get { return _numberOfSeasons; }
             set { _numberOfSeasons = value; }

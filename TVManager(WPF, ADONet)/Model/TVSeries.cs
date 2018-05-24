@@ -8,10 +8,10 @@ namespace TVManager_WPF__ADONet_.Model
 {
     public class TVSeries
     {
-        protected int _id;
+        protected int? _id;
         protected String _image;
         protected String _name;
-        protected int _year;
+        protected int? _year;
 
 
 
@@ -27,9 +27,9 @@ namespace TVManager_WPF__ADONet_.Model
             _year = year;
         }
 
-        public int Id { get => _id; set => _id = value; }
+        public int? Id { get => _id; set => _id = value; }
         public string Image { get => _image; set => _image = value; }
         public string Name { get => _name; set => _name = value; }
-        public int Year { get => _year; set => _year = value; }
+        public int? Year { get => _year; set => _year = value; }
     }
 }
