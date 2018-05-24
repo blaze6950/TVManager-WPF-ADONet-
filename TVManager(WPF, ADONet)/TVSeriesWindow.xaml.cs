@@ -26,7 +26,7 @@ namespace TVManager_WPF__ADONet_
 
 
         public Image ImageTVSeries { get => Image; set => Image = value; }
-        public TextBox Name { get => NameTB; set => NameTB = value; }
+        public TextBox NameTVSeries { get => NameTB; set => NameTB = value; }
         public TextBox Channel { get => ChannelTB; set => ChannelTB = value; }
         public TextBox Genre { get => GenreTB; set => GenreTB = value; }
         public TextBox Year { get => YearTB; set => YearTB = value; }
