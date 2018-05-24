@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TVManager_WPF__ADONet_.Model
 {
-    class TVSeries
+    public class TVSeries
     {
         protected int _id;
         protected String _image;

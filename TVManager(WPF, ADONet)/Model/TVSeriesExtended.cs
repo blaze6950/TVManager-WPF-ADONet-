@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TVManager_WPF__ADONet_.Model
 {
-    class TVSeriesExtended : TVSeries
+    public class TVSeriesExtended : TVSeries
     {
         private String _description;
         private String _channel;
