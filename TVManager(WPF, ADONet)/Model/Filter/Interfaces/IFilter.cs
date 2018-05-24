@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TVManager_WPF__ADONet_.Views.Filter
 {
-    interface IFilter
+    public interface IFilter
     {
         List<IFilterItem> FilterItemList { get; set; }
         void AddFilterItem(IFilterItem filterItem);

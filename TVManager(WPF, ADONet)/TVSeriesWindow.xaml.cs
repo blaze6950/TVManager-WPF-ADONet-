@@ -20,7 +20,7 @@ namespace TVManager_WPF__ADONet_
     /// </summary>
     public partial class TVSeriesWindow : Window
     {
-        public TVSeriesWindow(TVSeriesExtended TVSeries, TVSeriesWindowMode mode)
+        public TVSeriesWindow(TVSeriesExtended TVSeries, TVSeriesWindowMode mode, TVSeriesModel model)
         {
             InitializeComponent();
         }

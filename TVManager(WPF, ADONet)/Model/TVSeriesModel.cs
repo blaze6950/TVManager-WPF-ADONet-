@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace TVManager_WPF__ADONet_.Model
 {
-    class TVSeriesModel : IDisposable
+    public class TVSeriesModel : IDisposable
     {
         private String _connectionString;
         private String _factoryName;

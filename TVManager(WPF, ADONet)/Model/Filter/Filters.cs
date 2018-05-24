@@ -9,7 +9,7 @@ using TVManager_WPF__ADONet_.Views.Filter.FilterChannel;
 
 namespace TVManager_WPF__ADONet_
 {
-    class Filters
+    public class Filters
     {
         private IFilter _filterGenre;
         private IFilter _filterChannel;
