@@ -2,6 +2,7 @@
 {
     public interface IPresenterTVSeriesWindow
     {
-        
+        void OkeyButtonClick();
+        void CancelButtonClick();
     }
 }

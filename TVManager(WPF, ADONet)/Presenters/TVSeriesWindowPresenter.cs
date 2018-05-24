@@ -76,5 +76,16 @@ namespace TVManager_WPF__ADONet_.Presenters
             _view.Year.Text = _TVSeriesExtended.Year.ToString();
             _view.NumberOfSeasons.Text = _TVSeriesExtended.NumberOfSeasons.ToString();
         }
+
+
+        public void OkeyButtonClick()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CancelButtonClick()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
