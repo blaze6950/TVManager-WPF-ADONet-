@@ -17,8 +17,16 @@ namespace TVManager_WPF__ADONet_.Model
         {
         }
 
-        public TVSeriesExtended(int id, string image, string name, int year) : base(id, image, name, year)
+        public TVSeriesExtended(int id, string image, string name, int? year) : base(id, image, name, year)
         {
+        }
+
+        public TVSeriesExtended(string description, string channel, List<string> genreList, int? numberOfSeasons, int id, string image, string name, int? year) : base(id, image, name, year)
+        {
+            Description = description;
+            Channel = channel;
+            GenreList = genreList;
+            NumberOfSeasons = numberOfSeasons;
         }
 
         public String GetGenreListToString()

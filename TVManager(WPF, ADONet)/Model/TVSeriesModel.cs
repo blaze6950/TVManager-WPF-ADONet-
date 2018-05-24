@@ -258,11 +258,21 @@ namespace TVManager_WPF__ADONet_.Model
 
         public TVSeriesExtended GetExtendedTVSeriesItem(TVSeries item)
         {
+            TVSeriesExtended res = null;
             DbCommand command = _factory.CreateCommand();
             command.Connection = _connection;
-            command.CommandText = "SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name, TVSeriesTable.YearOfIssue FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id LEFT JOIN TVSeriesGenres ON TVSeriesTable.Id = TVSeriesGenres.TVSeries_Id LEFT JOIN Genres ON Genres.Id = TVSeriesGenres.Genre_Id WHERE ";
+            command.CommandText = $"SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name, TVSeriesTable.Seasons, TVSeriesTable.YearOfIssue, TVSeriesTable.Desription, Channels.Name as 'Channel' FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id WHERE TVSeriesTable.Id = {item.Id}";
+            DbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                res = new TVSeriesExtended((String)reader["Desription"], (String)reader["Channel"], null, (int?)reader["Seasons"], (int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int?)reader["YearOfIssue"]);
+            }
 
-            return new TVSeriesExtended();
+            //
+            //added code for load genreList
+            //
+
+            return res;
         }
 
         public void Dispose()
