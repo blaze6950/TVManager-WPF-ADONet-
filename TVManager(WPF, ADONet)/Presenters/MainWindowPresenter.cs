@@ -67,6 +67,11 @@ namespace TVManager_WPF__ADONet_.Presenters
             throw new NotImplementedException();
         }
 
+        public void ButtonEdit_Click(TVSeries item)
+        {
+            
+        }
+
         public void ComboBoxFind_TextInput(string findText)
         {
             if (findText.Length > 0)

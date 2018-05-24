@@ -67,7 +67,8 @@ namespace TVManager_WPF__ADONet_
         private void ButtonListViewItemEdit_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            TVSeries Item = (TVSeries)button.DataContext; 
+            TVSeries item = (TVSeries)button.DataContext; 
+            _presenter.ButtonEdit_Click(item);
         }
 
         private void ButtonListViewItemRemove_Click(object sender, RoutedEventArgs e)

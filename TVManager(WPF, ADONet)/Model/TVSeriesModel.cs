@@ -256,6 +256,15 @@ namespace TVManager_WPF__ADONet_.Model
             }           
         }
 
+        public TVSeriesExtended GetExtendedTVSeriesItem(TVSeries item)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = "SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name, TVSeriesTable.YearOfIssue FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id LEFT JOIN TVSeriesGenres ON TVSeriesTable.Id = TVSeriesGenres.TVSeries_Id LEFT JOIN Genres ON Genres.Id = TVSeriesGenres.Genre_Id WHERE ";
+
+            return new TVSeriesExtended();
+        }
+
         public void Dispose()
         {
             if (_connection != null && _connection.State == System.Data.ConnectionState.Open)
