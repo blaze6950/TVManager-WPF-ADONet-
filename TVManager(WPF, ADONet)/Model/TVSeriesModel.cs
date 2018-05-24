@@ -265,7 +265,7 @@ namespace TVManager_WPF__ADONet_.Model
             DbDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                res = new TVSeriesExtended((String)reader["Desription"], (String)reader["Channel"], null, (int?)reader["Seasons"], (int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int?)reader["YearOfIssue"]);
+                res = new TVSeriesExtended((String)reader["Desription"], (String)reader["Channel"], new List<string>(), (int?)reader["Seasons"], (int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int?)reader["YearOfIssue"]);
             }
 
             //

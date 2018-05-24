@@ -18,7 +18,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Margin="5" Name="Image"></Image>
+            <Image Margin="5" Name="Image" Stretch="UniformToFill"></Image>
             <StackPanel Grid.Column="1">
                 <TextBox Margin="5" Name="NameTB" IsEnabled="False" AutomationProperties.HelpText="Name" ToolTip="Name"/>
                 <GroupBox Header="Channel:">
@@ -35,7 +35,7 @@
                 </GroupBox>
             </StackPanel>
         </Grid>
-        <TextBox Grid.Row="1" Margin="5" Name="DescriptionTB"></TextBox>
+        <TextBox Grid.Row="1" Margin="5" Name="DescriptionTB" TextWrapping="WrapWithOverflow"></TextBox>
         <Grid Grid.Row="2" Name="GridButtonsOkCancel">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>

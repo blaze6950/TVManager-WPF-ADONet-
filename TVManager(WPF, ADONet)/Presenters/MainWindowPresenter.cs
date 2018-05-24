@@ -64,12 +64,15 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void ButtonNew_Click()
         {
-            throw new NotImplementedException();
+            TVSeriesWindow tvSeriesWindow = new TVSeriesWindow(null, TVSeriesWindowMode.New, _model);
+            tvSeriesWindow.ShowDialog();
         }
 
         public void ButtonEdit_Click(TVSeries item)
         {
-            
+            TVSeriesExtended tvSeriesExtended = _model.GetExtendedTVSeriesItem(item);
+            TVSeriesWindow tvSeriesWindow = new TVSeriesWindow(tvSeriesExtended, TVSeriesWindowMode.Edit, _model);
+            tvSeriesWindow.ShowDialog();
         }
 
         public void ComboBoxFind_TextInput(string findText)
