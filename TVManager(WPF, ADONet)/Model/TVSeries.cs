@@ -8,10 +8,10 @@ namespace TVManager_WPF__ADONet_.Model
 {
     class TVSeries
     {
-        private int _id;
-        private String _image;
-        private String _name;
-        private int _year;
+        protected int _id;
+        protected String _image;
+        protected String _name;
+        protected int _year;
 
 
 

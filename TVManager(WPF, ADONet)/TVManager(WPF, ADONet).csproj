@@ -70,6 +70,7 @@
     <Compile Include="Model\Filter\Filters.cs" />
     <Compile Include="Model\Filter\FilterYear\FilterYear.cs" />
     <Compile Include="Model\TVSeries.cs" />
+    <Compile Include="Model\TVSeriesExtended.cs" />
     <Compile Include="Presenters\IPresenterMainWindow.cs" />
     <Compile Include="Model\Filter\Interfaces\IFilter.cs" />
     <Compile Include="Model\Filter\Interfaces\IFilterItem.cs" />
