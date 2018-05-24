@@ -76,6 +76,7 @@
     <Compile Include="TVSeriesWindow.xaml.cs">
       <DependentUpon>TVSeriesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TVSeriesWindowMode.cs" />
     <Compile Include="Views\IViewMainWindow.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
