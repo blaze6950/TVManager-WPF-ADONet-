@@ -227,6 +227,7 @@ namespace TVManager_WPF__ADONet_.Model
                     }
                 }
 
+                stringBuilder.Insert(stringBuilder.Length, " GROUP BY TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name, TVSeriesTable.YearOfIssue");
                 command.CommandText = stringBuilder.ToString();
 
                 return command.ExecuteReader();
