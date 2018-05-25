@@ -37,12 +37,12 @@ namespace TVManager_WPF__ADONet_.Model
             {
                 if (res.Length > 0)
                 {
-                    res.AppendLine(", ");
-                    res.AppendLine(genre);
+                    res.Insert(res.Length, ", ");
+                    res.Insert(res.Length, genre);
                 }
                 else
                 {
-                    res.AppendLine(genre);
+                    res.Insert(res.Length, genre);
                 }
             }
 

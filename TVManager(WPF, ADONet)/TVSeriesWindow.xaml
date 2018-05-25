@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TVManager_WPF__ADONet_"
         mc:Ignorable="d"
-        Title="TVSeriesWindow" Height="450" Width="450">
+        Title="TVSeriesWindow" Height="450" Width="450" ResizeMode="NoResize">
     
     <Grid>
         <Grid.RowDefinitions>

@@ -44,6 +44,15 @@ namespace TVManager_WPF__ADONet_
 
         private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult res = MessageBox.Show("Cancel?", "Are u sure?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                _presenter.CancelButtonClick();
+            }
+        }
+
+        private void ButtonOkey_OnClick(object sender, RoutedEventArgs e)
+        {
             if (CheckFileds())
             {
                 _presenter.OkeyButtonClick();
@@ -52,15 +61,6 @@ namespace TVManager_WPF__ADONet_
             {
                 MessageBox.Show("Fill all fields and fill correct values!", "Ooops", MessageBoxButton.OK,
                     MessageBoxImage.Error);
-            }
-        }
-
-        private void ButtonOkey_OnClick(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult res = MessageBox.Show("Cancel?", "Are u sure?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (res == MessageBoxResult.Yes)
-            {
-                _presenter.CancelButtonClick();
             }
         }
 

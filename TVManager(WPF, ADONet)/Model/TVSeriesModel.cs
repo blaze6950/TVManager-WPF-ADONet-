@@ -262,15 +262,50 @@ namespace TVManager_WPF__ADONet_.Model
             DbCommand command = _factory.CreateCommand();
             command.Connection = _connection;
             command.CommandText = $"SELECT TVSeriesTable.Id, TVSeriesTable.Image, TVSeriesTable.Name, TVSeriesTable.Seasons, TVSeriesTable.YearOfIssue, TVSeriesTable.Desription, Channels.Name as 'Channel' FROM TVSeriesTable JOIN Channels ON TVSeriesTable.Channel_Id = Channels.Id WHERE TVSeriesTable.Id = {item.Id}";
-            DbDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            DbDataReader reader = null;
+            try
             {
-                res = new TVSeriesExtended((String)reader["Desription"], (String)reader["Channel"], new List<string>(), (int?)reader["Seasons"], (int)reader["Id"], (String)reader["Image"], (String)reader["Name"], (int?)reader["YearOfIssue"]);
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    res = new TVSeriesExtended((String) reader["Desription"], (String) reader["Channel"],
+                        new List<string>(), (int?) reader["Seasons"], (int) reader["Id"], (String) reader["Image"],
+                        (String) reader["Name"], (int?) reader["YearOfIssue"]);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+            
+            command.CommandText = $"SELECT Genres.Name FROM Genres JOIN TVSeriesGenres ON Genres.Id = TVSeriesGenres.Genre_Id WHERE TVSeriesGenres.TVSeries_Id = {item.Id}";
 
-            //
-            //added code for load genreList
-            //
+            try
+            {
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    res.GenreList.Add((String) reader["Name"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
 
             return res;
         }
