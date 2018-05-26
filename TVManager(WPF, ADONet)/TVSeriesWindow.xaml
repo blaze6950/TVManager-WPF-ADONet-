@@ -18,7 +18,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Margin="5" Name="Image" MouseLeftButtonUp="Image_MouseLeftButtonUp" Source="placeholder.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Image Margin="5" Name="Image" MouseLeftButtonUp="Image_MouseLeftButtonUp" Source="placeholder.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Click to choose image..."/>
             <StackPanel Grid.Column="1">
                 <TextBox Margin="5" Name="NameTB" IsEnabled="False" AutomationProperties.HelpText="Name" ToolTip="Name"/>
                 <GroupBox Header="Channel:">
