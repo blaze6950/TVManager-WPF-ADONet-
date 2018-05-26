@@ -90,5 +90,17 @@ namespace TVManager_WPF__ADONet_
             }            
             _presenter.ComboBoxFind_TextInput(ComboBoxFind.Text);
         }
+
+        private void MenuItemFilters_Click(object sender, RoutedEventArgs e)
+        {
+            if (MenuItemFilters.IsChecked)
+            {
+                FiltersPanel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                FiltersPanel.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }
