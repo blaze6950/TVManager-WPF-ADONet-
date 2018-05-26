@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using TVManager_WPF__ADONet_.Model;
 using TVManager_WPF__ADONet_.Views;
@@ -45,6 +47,8 @@ namespace TVManager_WPF__ADONet_.Presenters
         private void InitializeViewModeNew()
         {
             EnableElemntsInView();
+            LoadChannels();
+            LoadGenres();
         }
 
         private void InitializeViewModeView()
@@ -69,14 +73,46 @@ namespace TVManager_WPF__ADONet_.Presenters
         private void LoadInfoFromTVSeriesItem()
         {
             _view.NameTVSeries.Text = _TVSeriesExtended.Name;
-            _view.Channel.Text = _TVSeriesExtended.Channel;
-            _view.Genre.Text = _TVSeriesExtended.GetGenreListToString();
+            LoadChannels();
+            LoadGenres();
             _view.Description.Text = _TVSeriesExtended.Description;
             _view.ImageTVSeries.Source = new BitmapImage(new Uri(_TVSeriesExtended.Image));
             _view.Year.Text = _TVSeriesExtended.Year.ToString();
             _view.NumberOfSeasons.Text = _TVSeriesExtended.NumberOfSeasons.ToString();
         }
 
+        private void LoadChannels()
+        {
+            List<String> channelList = _model.GetChannelList();
+            _view.Channel.ItemsSource = channelList;
+            if (_TVSeriesExtended != null)
+            {
+                _view.Channel.Text = _TVSeriesExtended.Channel;
+            }
+        }
+
+        private void LoadGenres()
+        {
+            List<String> genreList = _model.GetGenreList();
+            CheckBox checkBox;
+            foreach (var genre in genreList)
+            {
+                checkBox = new CheckBox();
+                checkBox.Content = genre;
+                if (_TVSeriesExtended != null)
+                {
+                    foreach (var genreItem in _TVSeriesExtended.GenreList)
+                    {
+                        if (genre.Equals(genreItem))
+                        {
+                            checkBox.IsChecked = true;
+                            break;
+                        }
+                    }
+                }
+                _view.Genre.Items.Add(checkBox);
+            }
+        }
 
         public void OkeyButtonClick()
         {

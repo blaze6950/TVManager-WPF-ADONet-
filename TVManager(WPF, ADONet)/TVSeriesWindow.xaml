@@ -19,21 +19,36 @@
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Image Margin="5" Name="Image" MouseLeftButtonUp="Image_MouseLeftButtonUp" Source="placeholder.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Click to choose image..."/>
-            <StackPanel Grid.Column="1">
-                <TextBox Margin="5" Name="NameTB" IsEnabled="False" AutomationProperties.HelpText="Name" ToolTip="Name"/>
-                <GroupBox Header="Channel:">
-                    <TextBox Name="ChannelTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Channel" ToolTip="Channel"></TextBox>
-                </GroupBox>
-                <GroupBox Header="Genre:">
-                    <TextBox Name="GenreTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Genre" ToolTip="Genre" IsReadOnly="True"></TextBox>
-                </GroupBox>
-                <GroupBox Header="Year:">
-                    <TextBox Name="YearTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Year" ToolTip="Year"></TextBox>
-                </GroupBox>
-                <GroupBox Header="Number of seasons:">
-                    <TextBox Name="SeasonsTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Number of seasons" ToolTip="Number of seasons"></TextBox>
-                </GroupBox>
-            </StackPanel>
+            <ScrollViewer Grid.Column="1">
+                <StackPanel>
+                    <TextBox Margin="5" Name="NameTB" IsEnabled="False" AutomationProperties.HelpText="Name" ToolTip="Name"/>
+                    <GroupBox Header="Channel:">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <ComboBox Name="ChannelTB" IsEnabled="False" Margin="0 3 0 3" IsEditable="True"></ComboBox>
+                            <Button Grid.Column="1" Margin="3" Click="ButtonAddChannel_OnClick">Add..</Button>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Genre:">
+                        <ListBox Name="GenreTB" IsEnabled="False" Margin="0 3 0 3">
+                            <ListBoxItem>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                    <Button HorizontalAlignment="Center">Genres...</Button>
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                    </GroupBox>
+                    <GroupBox Header="Year:">
+                        <TextBox Name="YearTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Year" ToolTip="Year"></TextBox>
+                    </GroupBox>
+                    <GroupBox Header="Number of seasons:">
+                        <TextBox Name="SeasonsTB" IsEnabled="False" Margin="0 3 0 3" AutomationProperties.HelpText="Number of seasons" ToolTip="Number of seasons"></TextBox>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
         <TextBox Grid.Row="1" Margin="5" Name="DescriptionTB" TextWrapping="WrapWithOverflow"></TextBox>
         <Grid Grid.Row="2" Name="GridButtonsOkCancel">

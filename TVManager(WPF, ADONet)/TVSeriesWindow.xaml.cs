@@ -28,8 +28,8 @@ namespace TVManager_WPF__ADONet_
 
         public Image ImageTVSeries { get => Image; set => Image = value; }
         public TextBox NameTVSeries { get => NameTB; set => NameTB = value; }
-        public TextBox Channel { get => ChannelTB; set => ChannelTB = value; }
-        public TextBox Genre { get => GenreTB; set => GenreTB = value; }
+        public ComboBox Channel { get => ChannelTB; set => ChannelTB = value; }
+        public ListBox Genre { get => GenreTB; set => GenreTB = value; }
         public TextBox Year { get => YearTB; set => YearTB = value; }
         public TextBox NumberOfSeasons { get => SeasonsTB; set => SeasonsTB = value; }
         public TextBox Description { get => DescriptionTB; set => DescriptionTB = value; }
@@ -103,6 +103,11 @@ namespace TVManager_WPF__ADONet_
                         MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void ButtonAddChannel_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,8 +6,8 @@ namespace TVManager_WPF__ADONet_.Views
     {
         Image ImageTVSeries { get; set; }
         TextBox NameTVSeries { get; set; }
-        TextBox Channel { get; set; }
-        TextBox Genre { get; set; }
+        ComboBox Channel { get; set; }
+        ListBox Genre { get; set; }
         TextBox Year { get; set; }
         TextBox NumberOfSeasons { get; set; }
         TextBox Description { get; set; }
