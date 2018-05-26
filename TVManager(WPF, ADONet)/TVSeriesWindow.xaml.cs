@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using TVManager_WPF__ADONet_.Model;
 using TVManager_WPF__ADONet_.Presenters;
 using TVManager_WPF__ADONet_.Views;
@@ -84,6 +85,24 @@ namespace TVManager_WPF__ADONet_
                 return false;
             }
             return true;
+        }
+
+        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    Image.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Something go wrong... Try choose another picture! " + exception.Message, "Ooops", MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
+            }
         }
     }
 }
