@@ -293,28 +293,31 @@ namespace TVManager_WPF__ADONet_.Model
                 }
             }
 
-            StringBuilder stringBuilder = new StringBuilder("INSERT INTO TVSeriesGenres VALUES");
-            int size = stringBuilder.Length;
-            foreach (var genre in item.GenreList)
+            if (item.GenreList.Count > 0)
             {
-                if (stringBuilder.Length <= size)
+                StringBuilder stringBuilder = new StringBuilder("INSERT INTO TVSeriesGenres VALUES");
+                int size = stringBuilder.Length;
+                foreach (var genre in item.GenreList)
                 {
-                    stringBuilder.Insert(stringBuilder.Length,
-                        $"({item.Id}, (SELECT Id FROM Genres WHERE Name = '{genre}'))");
+                    if (stringBuilder.Length <= size)
+                    {
+                        stringBuilder.Insert(stringBuilder.Length,
+                            $"({item.Id}, (SELECT Id FROM Genres WHERE Name = '{genre}'))");
+                    }
+                    else
+                    {
+                        stringBuilder.Insert(stringBuilder.Length, $", ({item.Id}, (SELECT Id FROM Genres WHERE Name = '{genre}'))");
+                    }
                 }
-                else
+                command.CommandText = stringBuilder.ToString();
+                try
                 {
-                    stringBuilder.Insert(stringBuilder.Length, $", ({item.Id}, (SELECT Id FROM Genres WHERE Name = '{genre}'))");
+                    command.ExecuteNonQuery();
                 }
-            }
-            command.CommandText = stringBuilder.ToString();
-            try
-            {
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+                }
             }
         }
 

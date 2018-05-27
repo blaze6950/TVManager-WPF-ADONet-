@@ -136,9 +136,18 @@ namespace TVManager_WPF__ADONet_.Presenters
         {
             _TVSeriesExtended = new TVSeriesExtended();
             _TVSeriesExtended.Name = _view.NameTVSeries.Text;
-            _TVSeriesExtended.Image = (_view.ImageTVSeries.Source as BitmapImage).UriSource.AbsolutePath;
-            _TVSeriesExtended.Year = Int32.Parse(_view.Year.Text);
-            _TVSeriesExtended.NumberOfSeasons = Int32.Parse(_view.NumberOfSeasons.Text);
+            if ((_view.ImageTVSeries.Source as BitmapImage) != null)
+            {
+                _TVSeriesExtended.Image = (_view.ImageTVSeries.Source as BitmapImage).UriSource.AbsolutePath;
+            }
+            if (Int32.TryParse(_view.Year.Text, out var buf))
+            {
+                _TVSeriesExtended.Year = buf;
+            }
+            if (Int32.TryParse(_view.NumberOfSeasons.Text, out buf))
+            {
+                _TVSeriesExtended.NumberOfSeasons = buf;
+            }
             _TVSeriesExtended.Description = _view.Description.Text;
             _TVSeriesExtended.Channel = _view.Channel.Text;
             foreach (object genre in _view.Genre.Items)
