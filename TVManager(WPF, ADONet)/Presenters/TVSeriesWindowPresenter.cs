@@ -68,6 +68,7 @@ namespace TVManager_WPF__ADONet_.Presenters
             _view.ImageTVSeries.IsEnabled = true;
             _view.Year.IsEnabled = true;
             _view.NumberOfSeasons.IsEnabled = true;
+            _view.ChannelsField.IsEnabled = true;
             _view.ButtonsOkCancel.Visibility = Visibility.Visible;
         }
 
@@ -137,7 +138,6 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         void UpdateTVSeries()
         {
-            //_TVSeriesExtended = new TVSeriesExtended();
             _TVSeriesExtended.Name = _view.NameTVSeries.Text;
             if ((_view.ImageTVSeries.Source as BitmapImage) != null)
             {

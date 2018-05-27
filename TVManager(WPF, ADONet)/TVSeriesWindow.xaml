@@ -18,12 +18,12 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Margin="5" Name="Image" MouseLeftButtonUp="Image_MouseLeftButtonUp" Source="placeholder.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Click to choose image..."/>
+            <Image Margin="5" Name="Image" MouseLeftButtonUp="Image_MouseLeftButtonUp" Source="placeholder.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Click to choose image..." IsEnabled="False"/>
             <ScrollViewer Grid.Column="1">
                 <StackPanel>
                     <TextBox Margin="5" Name="NameTB" IsEnabled="False" AutomationProperties.HelpText="Name" ToolTip="Name"/>
                     <GroupBox Header="Channel:">
-                        <Grid>
+                        <Grid Name="ChannelField" IsEnabled="False">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="7*"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -50,7 +50,7 @@
                 </StackPanel>
             </ScrollViewer>
         </Grid>
-        <TextBox Grid.Row="1" Margin="5" Name="DescriptionTB" TextWrapping="WrapWithOverflow"></TextBox>
+        <TextBox Grid.Row="1" Margin="5" Name="DescriptionTB" TextWrapping="WrapWithOverflow" IsEnabled="False"></TextBox>
         <Grid Grid.Row="2" Name="GridButtonsOkCancel">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>

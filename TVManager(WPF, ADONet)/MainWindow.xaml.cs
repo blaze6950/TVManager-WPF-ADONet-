@@ -39,7 +39,7 @@ namespace TVManager_WPF__ADONet_
 
         private void MyListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            _presenter.ListViewMouseDoubleClick((TVSeries)((ListView)sender).SelectedItem);
         }
 
         private void CheckBoxFilter_StateChanged(object sender, RoutedEventArgs e)

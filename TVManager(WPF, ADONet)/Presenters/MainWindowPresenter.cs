@@ -99,5 +99,12 @@ namespace TVManager_WPF__ADONet_.Presenters
             _model.RemoveTvSeriesItem(item);
             LoadList();
         }
+
+        public void ListViewMouseDoubleClick(TVSeries item)
+        {
+            TVSeriesExtended tvSeriesExtended = _model.GetExtendedTVSeriesItem(item);
+            TVSeriesWindow tvSeriesWindow = new TVSeriesWindow(tvSeriesExtended, TVSeriesWindowMode.View, _model);
+            tvSeriesWindow.ShowDialog();
+        }
     }
 }

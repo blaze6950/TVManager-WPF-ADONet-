@@ -34,12 +34,13 @@ namespace TVManager_WPF__ADONet_
         public TextBox NumberOfSeasons { get => SeasonsTB; set => SeasonsTB = value; }
         public TextBox Description { get => DescriptionTB; set => DescriptionTB = value; }
         public Grid ButtonsOkCancel { get => GridButtonsOkCancel; set => GridButtonsOkCancel = value; }
+        public Grid ChannelsField { get => ChannelField; set => ChannelField = value; }
 
         public void CloseWindow()
         {
             this.Close();
         }
-
+        
 
         // ReSharper disable once InconsistentNaming
         public TVSeriesWindow(TVSeriesExtended TVSeriesItem, TVSeriesWindowMode mode, TVSeriesModel model)

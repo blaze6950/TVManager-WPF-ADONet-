@@ -70,7 +70,7 @@
                     <Button Margin="5" Grid.Column="1" Click="ButtonFind_Click">Find</Button>
                     <Button Margin="5" Grid.Column="2" Click="ButtonNew_Click">New</Button>
                 </Grid>
-                <ListView Name="ListTvSeries" Margin="5" Grid.Row="1">
+                <ListView Name="ListTvSeries" Margin="5" Grid.Row="1" MouseDoubleClick="MyListView_MouseDoubleClick">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Image" Width="110">

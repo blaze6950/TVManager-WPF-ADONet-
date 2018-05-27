@@ -13,5 +13,6 @@ namespace TVManager_WPF__ADONet_.Views
         TextBox Description { get; set; }
         Grid ButtonsOkCancel { get; set; }
         void CloseWindow();
+        Grid ChannelsField { get; set; }
     }
 }
