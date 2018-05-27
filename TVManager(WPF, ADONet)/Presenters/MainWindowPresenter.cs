@@ -66,6 +66,7 @@ namespace TVManager_WPF__ADONet_.Presenters
         {
             TVSeriesWindow tvSeriesWindow = new TVSeriesWindow(null, TVSeriesWindowMode.New, _model);
             tvSeriesWindow.ShowDialog();
+            LoadList();
         }
 
         public void ButtonEdit_Click(TVSeries item)
@@ -73,6 +74,7 @@ namespace TVManager_WPF__ADONet_.Presenters
             TVSeriesExtended tvSeriesExtended = _model.GetExtendedTVSeriesItem(item);
             TVSeriesWindow tvSeriesWindow = new TVSeriesWindow(tvSeriesExtended, TVSeriesWindowMode.Edit, _model);
             tvSeriesWindow.ShowDialog();
+            LoadList();
         }
 
         public void ComboBoxFind_TextInput(string findText)
