@@ -35,6 +35,11 @@ namespace TVManager_WPF__ADONet_
         public TextBox Description { get => DescriptionTB; set => DescriptionTB = value; }
         public Grid ButtonsOkCancel { get => GridButtonsOkCancel; set => GridButtonsOkCancel = value; }
 
+        public void CloseWindow()
+        {
+            this.Close();
+        }
+
 
         // ReSharper disable once InconsistentNaming
         public TVSeriesWindow(TVSeriesExtended TVSeriesItem, TVSeriesWindowMode mode, TVSeriesModel model)

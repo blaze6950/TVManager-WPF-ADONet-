@@ -257,6 +257,67 @@ namespace TVManager_WPF__ADONet_.Model
             }           
         }
 
+        public void AddTVSeriesItem(TVSeriesExtended item)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"INSERT INTO TVSeriesTable VALUES('{item.Name}', '{item.Image}', '{item.Year}', '{item.NumberOfSeasons}', '{item.Description}', (SELECT Id FROM Channels WHERE Name = '{item.Channel}'))";
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+
+            command.CommandText = $"(SELECT Id FROM TVSeriesTable WHERE Name = '{item.Name}' AND Image = '{item.Image}' AND YearOfIssue = '{item.Year}' AND Seasons = '{item.NumberOfSeasons}')";
+            DbDataReader reader = null;
+            try
+            {
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    item.Id = (Int32) reader["Id"];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+
+            StringBuilder stringBuilder = new StringBuilder("INSERT INTO TVSeriesGenres VALUES");
+            int size = stringBuilder.Length;
+            foreach (var genre in item.GenreList)
+            {
+                if (stringBuilder.Length <= size)
+                {
+                    stringBuilder.Insert(stringBuilder.Length,
+                        $"({item.Id}, (SELECT Id FROM Genres WHERE Name = '{genre}'))");
+                }
+                else
+                {
+                    stringBuilder.Insert(stringBuilder.Length, $", ({item.Id}, (SELECT Id FROM Genres WHERE Name = '{genre}'))");
+                }
+            }
+            command.CommandText = stringBuilder.ToString();
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+        }
+
         public TVSeriesExtended GetExtendedTVSeriesItem(TVSeries item)
         {
             TVSeriesExtended res = null;

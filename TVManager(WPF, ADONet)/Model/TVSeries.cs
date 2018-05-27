@@ -28,7 +28,20 @@ namespace TVManager_WPF__ADONet_.Model
         }
 
         public int Id { get => _id; set => _id = value; }
-        public string Image { get => _image; set => _image = value; }
+
+        public string Image
+        {
+            get
+            {
+                if (_image == null)
+                {
+                    return "";
+                }
+                return _image;
+            }
+            set => _image = value;
+        }
+
         public string Name { get => _name; set => _name = value; }
         public int? Year { get => _year; set => _year = value; }
     }

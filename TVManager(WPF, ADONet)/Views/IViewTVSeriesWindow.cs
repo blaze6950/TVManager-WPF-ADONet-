@@ -12,5 +12,6 @@ namespace TVManager_WPF__ADONet_.Views
         TextBox NumberOfSeasons { get; set; }
         TextBox Description { get; set; }
         Grid ButtonsOkCancel { get; set; }
+        void CloseWindow();
     }
 }
