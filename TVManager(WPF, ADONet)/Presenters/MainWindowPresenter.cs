@@ -106,5 +106,15 @@ namespace TVManager_WPF__ADONet_.Presenters
             TVSeriesWindow tvSeriesWindow = new TVSeriesWindow(tvSeriesExtended, TVSeriesWindowMode.View, _model);
             tvSeriesWindow.ShowDialog();
         }
+
+        public void GenresMenu_Click()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChannelsMenu_Click()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -14,8 +14,8 @@
 
         <Menu Grid.Row="0" Background="#FFE2E2E2">
             <MenuItem Name="MenuItemFilters" Margin="5" Header="Filters" IsCheckable="True" IsChecked="True" Click="MenuItemFilters_Click"></MenuItem>
-            <MenuItem Header="Genres..."></MenuItem>
-            <MenuItem Header="Channels..."></MenuItem>
+            <MenuItem Header="Genres..." Click="MenuItemGenres_OnClick"></MenuItem>
+            <MenuItem Header="Channels..." Click="MenuItemChannels_OnClick"></MenuItem>
         </Menu>
         
         <DockPanel LastChildFill="True" Grid.Row="1">

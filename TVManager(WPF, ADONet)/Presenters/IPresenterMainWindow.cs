@@ -16,5 +16,7 @@ namespace TVManager_WPF__ADONet_.Presenters
         void ComboBoxFind_TextInput(String findText);
         void ListViewItemRemove(TVSeries item);
         void ListViewMouseDoubleClick(TVSeries item);
+        void GenresMenu_Click();
+        void ChannelsMenu_Click();
     }
 }

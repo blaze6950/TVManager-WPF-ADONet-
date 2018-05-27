@@ -102,5 +102,15 @@ namespace TVManager_WPF__ADONet_
                 FiltersPanel.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void MenuItemGenres_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void MenuItemChannels_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
