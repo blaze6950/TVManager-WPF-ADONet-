@@ -7,18 +7,22 @@
         mc:Ignorable="d"
         Title="TVSeries Manager" Height="450" Width="850.431">
     <Grid Name="GridMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="361*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Background="#FFE2E2E2">
+        <Menu Grid.Row="0" Background="#FFE2E2E2" Grid.ColumnSpan="2" Margin="0,0,0,36">
             <MenuItem Name="MenuItemFilters" Margin="5" Header="Filters" IsCheckable="True" IsChecked="True" Click="MenuItemFilters_Click"></MenuItem>
             <MenuItem Header="Genres..." Click="MenuItemGenres_OnClick"></MenuItem>
             <MenuItem Header="Channels..." Click="MenuItemChannels_OnClick"></MenuItem>
         </Menu>
-        
-        <DockPanel LastChildFill="True" Grid.Row="1">
+
+        <DockPanel LastChildFill="True" Grid.ColumnSpan="2" Margin="0,28,0,0" Grid.RowSpan="2">
             <ScrollViewer Name="FiltersPanel">
                 <StackPanel Orientation="Vertical" Margin="5" Background="#FFE2E2E2">
                     <GroupBox Header="Genres" Margin="5">
@@ -47,9 +51,9 @@
                                     <ColumnDefinition Width="2*"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Grid.Column="0" Name="TextBoxStartYear"></TextBox>
-                                <TextBlock Grid.Column="1" TextAlignment="Center">-</TextBlock>
-                                <TextBox Grid.Column="2" Name="TextBoxEndYear"></TextBox>
+                                <TextBox Grid.Column="0" Name="TextBoxStartYear" TextChanged="TextBoxStartYear_OnTextChanged"></TextBox>
+                                <Button Grid.Column="1" Click="ButtonResetYearFilter_OnClick">-</Button>
+                                <TextBox Grid.Column="2" Name="TextBoxEndYear" TextChanged="TextBoxEndYear_OnTextChanged"></TextBox>
                             </Grid>
                         </StackPanel>
                     </GroupBox>

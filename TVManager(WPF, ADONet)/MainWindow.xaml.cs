@@ -105,12 +105,67 @@ namespace TVManager_WPF__ADONet_
 
         private void MenuItemGenres_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _presenter.GenresMenu_Click();
         }
 
         private void MenuItemChannels_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _presenter.ChannelsMenu_Click();
+        }
+
+        private void TextBoxStartYear_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Int32.TryParse(TextBoxStartYear.Text, out var startYear))
+            {
+                if (Int32.TryParse(TextBoxEndYear.Text, out var endYear))
+                {
+                    if (startYear > endYear)
+                    {
+                        endYear = startYear;
+                        TextBoxEndYear.Text = endYear.ToString();
+                    }
+                }
+                else
+                {
+                    endYear = startYear;
+                    TextBoxEndYear.Text = endYear.ToString();
+                }
+                if (endYear > 1800 && startYear > 1800)
+                {
+                    _presenter.Year_Changed(endYear, startYear);
+                }
+            }
+        }
+
+        private void TextBoxEndYear_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Int32.TryParse(TextBoxEndYear.Text, out var endYear))
+            {
+                if (Int32.TryParse(TextBoxStartYear.Text, out var startYear))
+                {
+                    if (startYear > endYear)
+                    {
+                        startYear = endYear;
+                        TextBoxStartYear.Text = startYear.ToString();
+                    }
+                }
+                else
+                {
+                    startYear = endYear;
+                    TextBoxStartYear.Text = startYear.ToString();
+                }
+                if (endYear > 1800 && startYear > 1800)
+                {
+                    _presenter.Year_Changed(startYear, endYear);
+                }
+            }
+        }
+
+        private void ButtonResetYearFilter_OnClick(object sender, RoutedEventArgs e)
+        {
+            TextBoxStartYear.Text = "";
+            TextBoxEndYear.Text = "";
+            _presenter.ResetYearFilter();
         }
     }
 }

@@ -116,5 +116,19 @@ namespace TVManager_WPF__ADONet_.Presenters
         {
             throw new NotImplementedException();
         }
+
+        public void Year_Changed(int startYear, int endYear)
+        {
+            _filters.FilterYear.FilterItemList.Clear();
+            _filters.FilterYear.FilterItemList.Add(new FilterItem(startYear.ToString(), true));
+            _filters.FilterYear.FilterItemList.Add(new FilterItem(endYear.ToString(), true));
+            LoadList();
+        }
+
+        public void ResetYearFilter()
+        {
+            _filters.FilterYear.FilterItemList.Clear();
+            LoadList();
+        }
     }
 }

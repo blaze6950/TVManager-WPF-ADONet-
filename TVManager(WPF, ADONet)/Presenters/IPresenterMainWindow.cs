@@ -18,5 +18,7 @@ namespace TVManager_WPF__ADONet_.Presenters
         void ListViewMouseDoubleClick(TVSeries item);
         void GenresMenu_Click();
         void ChannelsMenu_Click();
+        void Year_Changed(int startYear, int endYear);
+        void ResetYearFilter();
     }
 }

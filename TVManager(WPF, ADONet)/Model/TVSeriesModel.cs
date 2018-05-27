@@ -211,7 +211,7 @@ namespace TVManager_WPF__ADONet_.Model
                     }
                     else
                     {
-                        stringBuilder.Insert(stringBuilder.Length, "YearOfIssue IN (" + filters.FilterYear.ToString() + ")");
+                        stringBuilder.Insert(stringBuilder.Length, "YearOfIssue >= (" + filters.FilterYear.FilterItemList[0].Item + ") AND YearOfIssue <= (" + filters.FilterYear.FilterItemList[1].Item + ")");
                     }
                 }
 
