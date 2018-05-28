@@ -47,7 +47,13 @@ namespace TVManager_WPF__ADONet_
         private void ButtonListViewItemRemove_Click(object sender, RoutedEventArgs e)
         {
             String item = (String)((Button) sender).DataContext;
-            _model.RemoveChannel(item);
+            var res = MessageBox.Show("Delete this channel?", "Are u sure?", MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                _model.RemoveChannel(item);
+                LoadChannelList();
+            }
         }
 
         private void ButtonAddUpdate_OnClick(object sender, RoutedEventArgs e)
@@ -58,12 +64,10 @@ namespace TVManager_WPF__ADONet_
                     MessageBoxImage.Question);
                 if (res == MessageBoxResult.Yes)
                 {
-
+                    _model.UpdateChannel((String)ListViewChannels.SelectedItem, TextBox.Text);
                 }
                 ButtonAddUpdate.Content = "Add";
                 ListViewChannels.IsEnabled = true;
-
-                _model.UpdateChannel((String) ListViewChannels.SelectedItem, TextBox.Text);
             }
             else
             {
@@ -71,6 +75,7 @@ namespace TVManager_WPF__ADONet_
             }
             isEditing = false;
             LoadChannelList();
+            TextBox.Text = "";
         }
     }
 }
