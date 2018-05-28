@@ -147,6 +147,77 @@ namespace TVManager_WPF__ADONet_.Model
             return newList;
         }
 
+        public void UpdateGenre(String oldGenre, String newGenre)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+
+            command.CommandText = $"SELECT Id FROM Genres WHERE Name = '{oldGenre}'";
+            int Id = -1;
+            try
+            {
+                Id = (int)command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+
+            command.CommandText = $"UPDATE Genres SET Name = '{newGenre}' WHERE Id = '{Id}'";
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+        }
+
+        public void RemoveGenre(String genre)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+
+            command.CommandText = $"SELECT Id FROM Genres WHERE Name = '{genre}'";
+            int Id = -1;
+            try
+            {
+                Id = (int)command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+
+            command.CommandText = $"DELETE FROM Genres WHERE Id = '{Id}'";
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+        }
+
+        public void AddGenre(String newGenre)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+
+            command.CommandText = $"INSERT INTO Genres VALUES ('{newGenre}')";
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+        }
+
         public List<String> GetChannelList()
         {
             List<String> newList = new List<string>();

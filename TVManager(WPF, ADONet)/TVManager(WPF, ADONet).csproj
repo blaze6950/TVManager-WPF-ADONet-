@@ -58,8 +58,15 @@
     <Compile Include="ChannelsWindow.xaml.cs">
       <DependentUpon>ChannelsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GenresWindow.xaml.cs">
+      <DependentUpon>GenresWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\IViewTVSeriesWindow.cs" />
     <Page Include="ChannelsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GenresWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

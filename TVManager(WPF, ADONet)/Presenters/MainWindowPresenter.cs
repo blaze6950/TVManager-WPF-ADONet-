@@ -109,7 +109,8 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void GenresMenu_Click()
         {
-            throw new NotImplementedException();
+            GenresWindow genresWindow = new GenresWindow(_model);
+            genresWindow.ShowDialog();
         }
 
         public void ChannelsMenu_Click()
