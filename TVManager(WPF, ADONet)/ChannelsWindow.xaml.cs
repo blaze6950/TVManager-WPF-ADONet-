@@ -46,7 +46,8 @@ namespace TVManager_WPF__ADONet_
 
         private void ButtonListViewItemRemove_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            String item = (String)((Button) sender).DataContext;
+            _model.RemoveChannel(item);
         }
 
         private void ButtonAddUpdate_OnClick(object sender, RoutedEventArgs e)
@@ -66,7 +67,7 @@ namespace TVManager_WPF__ADONet_
             }
             else
             {
-                //add channel
+                _model.AddChannel(TextBox.Text);
             }
             isEditing = false;
             LoadChannelList();
