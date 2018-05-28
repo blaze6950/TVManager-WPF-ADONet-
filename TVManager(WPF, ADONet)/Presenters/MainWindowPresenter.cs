@@ -114,7 +114,8 @@ namespace TVManager_WPF__ADONet_.Presenters
 
         public void ChannelsMenu_Click()
         {
-            throw new NotImplementedException();
+            ChannelsWindow channelsWindow = new ChannelsWindow(_model);
+            channelsWindow.ShowDialog();
         }
 
         public void Year_Changed(int startYear, int endYear)

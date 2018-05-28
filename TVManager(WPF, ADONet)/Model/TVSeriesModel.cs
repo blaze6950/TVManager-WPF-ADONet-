@@ -178,6 +178,24 @@ namespace TVManager_WPF__ADONet_.Model
             return newList;
         }
 
+        public void UpdateChannel(String oldChannel, String newChannel)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+
+            command.CommandText = "UPDATE "
+                ///
+                /// ///
+                /// ///
+                /// ///
+                /// 
+                /// 
+                /// 
+                /// 
+                /// 
+                /// 
+        }
+
         private DbDataReader BuildCommand(Filters filters, String name)
         {
             DbCommand command = _factory.CreateCommand();

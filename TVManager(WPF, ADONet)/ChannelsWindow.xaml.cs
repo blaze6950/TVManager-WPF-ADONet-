@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TVManager_WPF__ADONet_.Model;
 
 namespace TVManager_WPF__ADONet_
 {
@@ -19,9 +20,56 @@ namespace TVManager_WPF__ADONet_
     /// </summary>
     public partial class ChannelsWindow : Window
     {
-        public ChannelsWindow()
+        private TVSeriesModel _model;
+        private bool isEditing = false;
+
+        public ChannelsWindow(TVSeriesModel model)
         {
             InitializeComponent();
+            _model = model;
+            LoadChannelList();
+        }
+
+        private void LoadChannelList()
+        {
+            ListViewChannels.ItemsSource = _model.GetChannelList();
+        }
+
+        private void ButtonListViewItemEdit_Click(object sender, RoutedEventArgs e)
+        {
+            isEditing = true;
+            ListViewChannels.SelectedItem = ((Button) sender).DataContext;
+            ListViewChannels.IsEnabled = false;
+            TextBox.Text = (String) ((Button) sender).DataContext;
+            ButtonAddUpdate.Content = "Next...";
+        }
+
+        private void ButtonListViewItemRemove_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonAddUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (isEditing)
+            {
+                var res = MessageBox.Show("Update this channel?", "Are u sure?", MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+
+                }
+                ButtonAddUpdate.Content = "Add";
+                ListViewChannels.IsEnabled = true;
+
+                _model.UpdateChannel((String) ListViewChannels.SelectedItem, TextBox.Text);
+            }
+            else
+            {
+                //add channel
+            }
+            isEditing = false;
+            LoadChannelList();
         }
     }
 }
