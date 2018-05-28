@@ -183,17 +183,70 @@ namespace TVManager_WPF__ADONet_.Model
             DbCommand command = _factory.CreateCommand();
             command.Connection = _connection;
 
-            command.CommandText = "UPDATE "
-                ///
-                /// ///
-                /// ///
-                /// ///
-                /// 
-                /// 
-                /// 
-                /// 
-                /// 
-                /// 
+            command.CommandText = $"SELECT Id FROM Channels WHERE Name = '{oldChannel}'";
+            int Id = -1;
+            try
+            {
+                Id = (int)command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+
+            command.CommandText = $"UPDATE Channels SET Name = '{newChannel}' WHERE Id = '{Id}'";
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+        }
+
+        public void RemoveChannel(String channel)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+
+            command.CommandText = $"SELECT Id FROM Channels WHERE Name = '{channel}'";
+            int Id = -1;
+            try
+            {
+                Id = (int)command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+
+            command.CommandText = $"DELETE FROM Channels WHERE Id = '{Id}'";
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
+        }
+
+        public void AddChannel(String newChannel)
+        {
+            DbCommand command = _factory.CreateCommand();
+            command.Connection = _connection;
+
+            command.CommandText = $"INSERT INTO Channels VALUES ('{newChannel}')";
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ooops", MessageBoxButton.OK);
+            }
         }
 
         private DbDataReader BuildCommand(Filters filters, String name)
